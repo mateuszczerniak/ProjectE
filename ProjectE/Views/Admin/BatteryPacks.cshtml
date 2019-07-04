@@ -1,0 +1,99 @@
+﻿@model IEnumerable<ProjectE.Models.BatteryPack>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "BatteryPackCreate")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ShortcutName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TechnologicalName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MonoblockNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StringNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DischargeCurrent1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DischargeCurrent2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DischargeCurrent3)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductionYear)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AssemblyDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastReviewDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Owner.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Battery.BatteryType)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.ShortcutName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.TechnologicalName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.MonoblockNumber)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.StringNumber)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.DischargeCurrent1)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.DischargeCurrent2)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.DischargeCurrent3)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.ProductionYear)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.AssemblyDate)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.LastReviewDate)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Owner.Name)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Battery.BatteryType)
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "BatteryPackEdit", new { id = item.BatteryPackId }) |
+        @Html.ActionLink("Details", "BatteryPackDetails", new { id = item.BatteryPackId }) |
+        @Html.ActionLink("Delete", "BatteryPackDelete", new { id = item.BatteryPackId })
+    </td>
+</tr>
+}
+
+</table>

@@ -1,0 +1,105 @@
+﻿@model IEnumerable<ProjectE.Models.Device>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "DeviceCreate")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ShortcutName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SerialNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PrimarySupply)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SecondarySupply)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductionYear)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AssemblyDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastReviewDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Installation.ShortcutName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BatteryPack.ShortcutName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Load.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OperatingMode.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DeviceType.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DeviceModel.Name)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.ShortcutName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.SerialNumber)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.PrimarySupply)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.SecondarySupply)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.ProductionYear)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.AssemblyDate)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.LastReviewDate)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Installation.ShortcutName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.BatteryPack.ShortcutName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Load.Name)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.OperatingMode.Name)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.DeviceType.Name)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.DeviceModel.Name)
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "DeviceEdit", new { id = item.DeviceId }) |
+        @Html.ActionLink("Details", "DeviceDetails", new { id = item.DeviceId }) |
+        @Html.ActionLink("Delete", "DeviceDelete", new { id = item.DeviceId })
+    </td>
+</tr>
+}
+
+</table>

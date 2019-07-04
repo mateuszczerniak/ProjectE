@@ -1,0 +1,114 @@
+﻿@model ProjectE.Models.BatteryPack
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>BatteryPack</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ShortcutName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ShortcutName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TechnologicalName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TechnologicalName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MonoblockNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MonoblockNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StringNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StringNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DischargeCurrent1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DischargeCurrent1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DischargeCurrent2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DischargeCurrent2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DischargeCurrent3)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DischargeCurrent3)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProductionYear)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProductionYear)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AssemblyDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AssemblyDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastReviewDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastReviewDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Owner.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Owner.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Battery.BatteryType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Battery.BatteryType)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "BatteryPackEdit", new { id = Model.BatteryPackId }) |
+    @Html.ActionLink("Back to List", "BatteryPacks")
+</p>

@@ -1,0 +1,32 @@
+﻿@model IEnumerable<ProjectE.Models.WorkSheet>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "WorkSheetCreate")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Device)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Device)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "ToolTypeEdit", new { id=item.WorkSheetId }) |
+            @Html.ActionLink("Delete", "ToolTypeDelete", new { id=item.WorkSheetId })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,38 @@
+﻿@model IEnumerable<ProjectE.Models.Installation>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "InstallationCreate")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ShortcutName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ShortcutName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "InstallationEdit", new { id=item.InstallationId }) |
+            @Html.ActionLink("Delete", "InstallationDelete", new { id=item.InstallationId })
+        </td>
+    </tr>
+}
+
+</table>

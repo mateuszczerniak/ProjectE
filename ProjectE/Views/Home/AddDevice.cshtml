@@ -1,0 +1,147 @@
+﻿@model ProjectE.Models.Device
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="col-xs-12 row">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.DeviceId)
+        <div class="col-xs-6" style="border: thin solid black">
+            <h3>Urządzenie</h3>
+            <div class="row">
+                @Html.LabelFor(model => model.Installation.ShortcutName, "Instalacja", htmlAttributes: new { @class = "control-label col-md-5" })
+                @Html.DisplayFor(model => model.Installation.ShortcutName)
+            </div>
+            <div class="row">
+                @Html.LabelFor(model => model.ShortcutName, "Nazwa", htmlAttributes: new { @class = "control-label col-md-5" })
+                @Html.DisplayFor(model => model.ShortcutName)
+            </div>
+            <div class="row">
+                @Html.LabelFor(model => model.DeviceModel.Name, "Model", htmlAttributes: new { @class = "control-label col-md-5" })
+                @Html.DisplayFor(model => model.DeviceModel.Name)
+            </div>
+            <div class="row">
+                @Html.LabelFor(model => model.DeviceModel.Manufacturer.Name, "Producent", htmlAttributes: new { @class = "control-label col-md-5" })
+                @Html.DisplayFor(model => model.DeviceModel.Manufacturer.Name)
+            </div>
+            <div class="row">
+                @Html.LabelFor(model => model.DeviceModel.Power, "Moc", htmlAttributes: new { @class = "control-label col-md-5" })
+                @Html.DisplayFor(model => model.DeviceModel.Power)
+            </div>
+            <div class="row">
+                @Html.LabelFor(model => model.LastReviewDate, "Data ostatniego przeglądu", htmlAttributes: new { @class = "control-label col-md-5" })
+                @Html.DisplayFor(model => model.LastReviewDate)
+            </div>
+            <div class="row">
+                @Html.LabelFor(model => model.PrimarySupply, "Zasilanie podstawowe", htmlAttributes: new { @class = "control-label col-md-5" })
+                @Html.DisplayFor(model => model.PrimarySupply)
+            </div>
+            <div class="row">
+                @Html.LabelFor(model => model.SecondarySupply, "Zasilanie rezerwowe", htmlAttributes: new { @class = "control-label col-md-5" })
+                @Html.DisplayFor(model => model.SecondarySupply)
+            </div>
+            <div class="row">
+                @Html.LabelFor(model => model.SerialNumber, "Numer seryjny", htmlAttributes: new { @class = "control-label col-md-5" })
+                @Html.DisplayFor(model => model.SerialNumber)
+            </div>
+        </div>
+        <div class="col-xs-6" style="border: thin solid black">
+            <h3>Bateria</h3>
+            <div class="row">
+                @Html.LabelFor(model => model.BatteryPack.TechnologicalName, "Numer seryjny", htmlAttributes: new { @class = "control-label col-md-5" })
+                @Html.DisplayFor(model => model.BatteryPack.TechnologicalName)
+            </div>
+            <div class="row">
+                @Html.LabelFor(model => model.BatteryPack.Battery.BatterySpecies.Species, "Typ akumulatora", htmlAttributes: new { @class = "control-label col-md-5" })
+                @Html.DisplayFor(model => model.BatteryPack.Battery.BatterySpecies.Species)
+            </div>
+            <div class="row">
+                @Html.LabelFor(model => model.BatteryPack.Battery.BatteryType, "Model akumulatora", htmlAttributes: new { @class = "control-label col-md-5" })
+                @Html.DisplayFor(model => model.BatteryPack.Battery.BatteryType)
+            </div>
+            <div class="row">
+                @Html.LabelFor(model => model.BatteryPack.StringNumber, "Liczba stringów", htmlAttributes: new { @class = "control-label col-md-5" })
+                @Html.DisplayFor(model => model.BatteryPack.StringNumber)
+            </div>
+            <div class="row">
+                @Html.LabelFor(model => model.BatteryPack.Battery.Capacity, "Pojemność akumulatora", htmlAttributes: new { @class = "control-label col-md-5" })
+                @Html.DisplayFor(model => model.BatteryPack.Battery.Capacity)
+            </div>
+            <div class="row">
+                @Html.LabelFor(model => model.BatteryPack.Battery.CellQuantity, "Liczba cel akumulatora", htmlAttributes: new { @class = "control-label col-md-5" })
+                @Html.DisplayFor(model => model.BatteryPack.Battery.CellQuantity)
+            </div>
+            <div class="row">
+                @Html.LabelFor(model => model.BatteryPack.Battery.CellQuantity, "Liczba monobloków", htmlAttributes: new { @class = "control-label col-md-5" })
+                @Html.DisplayFor(model => model.BatteryPack.MonoblockNumber)
+            </div>
+            <div class="row">
+                @Html.LabelFor(model => model.BatteryPack.Battery.CellQuantity, "Liczba cel akumulatora", htmlAttributes: new { @class = "control-label col-md-5" })
+                @Html.DisplayFor(model => model.BatteryPack.Battery.CellQuantity)
+            </div>
+            <div class="row">
+                @Html.LabelFor(model => model.BatteryPack.Battery.CellQuantity, "Liczba cel akumulatora", htmlAttributes: new { @class = "control-label col-md-5" })
+                @Html.DisplayFor(model => model.BatteryPack.Battery.CellQuantity)
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-xs-12" style="vertical-align: middle">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+
+
+
+
+
+
+@*@using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4>Device</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.DeviceId)
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Installation.ShortcutName, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Installation.ShortcutName, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                    @Html.ValidationMessageFor(model => model.Installation.ShortcutName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ShortcutName, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.ShortcutName, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                    @Html.ValidationMessageFor(model => model.ShortcutName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Save" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }*@
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

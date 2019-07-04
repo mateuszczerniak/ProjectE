@@ -1,0 +1,63 @@
+﻿@model IEnumerable<ProjectE.Models.Battery>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "BatteryCreate")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.BatterySpecies.Species)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Manufacturer.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BatteryType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Capacity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CellVoltage)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CellQuantity)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.BatterySpecies.Species)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Manufacturer.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BatteryType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Capacity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CellVoltage)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CellQuantity)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "BatteryEdit", new { id=item.BatteryId }) |
+            @Html.ActionLink("Details", "BatteryDetails", new { id=item.BatteryId }) |
+            @Html.ActionLink("Delete", "BatteryDelete", new { id=item.BatteryId })
+        </td>
+    </tr>
+}
+
+</table>

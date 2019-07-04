@@ -1,0 +1,81 @@
+﻿@model IEnumerable<ProjectE.Models.DeviceModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "DeviceModelCreate")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Power)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.InputVoltage)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OutputVoltage)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.InputCurrent)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OutputCurrent)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.InputPhaseNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OutputPhaseNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Manufacturer.Name)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Name)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Power)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.InputVoltage)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.OutputVoltage)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.InputCurrent)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.OutputCurrent)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.InputPhaseNumber)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.OutputPhaseNumber)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Manufacturer.Name)
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "DeviceModelEdit", new { id = item.DeviceModelId }) |
+        @Html.ActionLink("Details", "DeviceModelDetails", new { id = item.DeviceModelId }) |
+        @Html.ActionLink("Delete", "DeviceModelDelete", new { id = item.DeviceModelId })
+    </td>
+</tr>
+}
+
+</table>

@@ -1,0 +1,90 @@
+﻿@model ProjectE.Models.DeviceModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Tool</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Power)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Power)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.InputVoltage)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InputVoltage)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OutputVoltage)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OutputVoltage)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.InputCurrent)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InputCurrent)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OutputCurrent)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OutputCurrent)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.InputPhaseNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InputPhaseNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OutputPhaseNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OutputPhaseNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Manufacturer.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Manufacturer.Name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "DeviceModelEdit", new { id = Model.DeviceModelId }) |
+    @Html.ActionLink("Back to List", "DeviceModels")
+</p>

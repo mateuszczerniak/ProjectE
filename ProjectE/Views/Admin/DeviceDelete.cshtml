@@ -1,0 +1,128 @@
+﻿@model ProjectE.Models.Device
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Device</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ShortcutName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ShortcutName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SerialNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SerialNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PrimarySupply)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PrimarySupply)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SecondarySupply)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SecondarySupply)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProductionYear)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProductionYear)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AssemblyDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AssemblyDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastReviewDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastReviewDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Installation.ShortcutName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Installation.ShortcutName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BatteryPack.ShortcutName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BatteryPack.ShortcutName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Load.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Load.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OperatingMode.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OperatingMode.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DeviceType.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DeviceType.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DeviceModel.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DeviceModel.Name)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Devices")
+        </div>
+    }
+</div>
