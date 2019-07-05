@@ -24,7 +24,7 @@ namespace ProjectE.Models
         public DbSet<Load> Loads { set; get; }
         public DbSet<Manufacturer> Manufacturers { set; get; }
         public DbSet<OperatingMode> OperatingModes { set; get; }
-        public DbSet<Owner> Owners { set; get; }
+        //public DbSet<Owner> Owners { set; get; }
         public DbSet<Tool> Tools { set; get; }
         public DbSet<ToolType> ToolTypes { set; get; }
         public DbSet<WorkReason> WorkReasons { set; get; }

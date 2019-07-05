@@ -49,10 +49,6 @@ namespace ProjectE.Models
         public int DeviceModelId { get; set; }
         public virtual DeviceModel DeviceModel { get; set; }
 
-        [ForeignKey("DeviceType")]
-        public int DeviceTypeId { get; set; }
-        public virtual DeviceType DeviceType { get; set; }
-
         public virtual ICollection<WorkSheet> WorkSheets { get; set; }
     }
 }

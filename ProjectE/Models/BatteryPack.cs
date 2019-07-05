@@ -30,10 +30,6 @@ namespace ProjectE.Models
         [DisplayFormat(DataFormatString = "{0:dd.MM.yyyy}", ApplyFormatInEditMode = true)]
         public System.DateTime LastReviewDate { get; set; }
 
-        [ForeignKey("Owner")]
-        public int OwnerId { get; set; }
-        public virtual Owner Owner { get; set; }
-
         [ForeignKey("Battery")]
         public int BatteryId { get; set; }
         public virtual Battery Battery { get; set; }

@@ -41,8 +41,6 @@ namespace ProjectE.Controllers
                 OperatingMode = s.OperatingMode.Name,
                 DeviceModelId = s.DeviceModelId,
                 DeviceModel = s.DeviceModel.Name,
-                DeviceTypeId = s.DeviceTypeId,
-                DeviceType = s.DeviceType.Name,
                 WorkSheets = s.WorkSheets.Count(),
             });
             return View(lista);
@@ -127,7 +125,6 @@ namespace ProjectE.Controllers
             }
             ViewBag.BatteryPackId = new SelectList(db.BatteryPacks, "BatteryPackId", "ShortcutName", device.BatteryPackId);
             ViewBag.DeviceModelId = new SelectList(db.DeviceModels, "DeviceModelId", "Name", device.DeviceModelId);
-            ViewBag.DeviceTypeId = new SelectList(db.DeviceTypes, "DeviceTypeId", "Name", device.DeviceTypeId);
             ViewBag.InstallationId = new SelectList(db.Installations, "InstallationId", "ShortcutName", device.InstallationId);
             ViewBag.LoadId = new SelectList(db.Loads, "LoadId", "Name", device.LoadId);
             ViewBag.OperatingModeId = new SelectList(db.OperatingModes, "OperatingModeId", "Name", device.OperatingModeId);
@@ -146,7 +143,6 @@ namespace ProjectE.Controllers
             }
             ViewBag.BatteryPackId = new SelectList(db.BatteryPacks, "BatteryPackId", "ShortcutName", workSheet.Device.BatteryPackId);
             ViewBag.DeviceModelId = new SelectList(db.DeviceModels, "DeviceModelId", "Name", workSheet.Device.DeviceModelId);
-            ViewBag.DeviceTypeId = new SelectList(db.DeviceTypes, "DeviceTypeId", "Name", workSheet.Device.DeviceTypeId);
             ViewBag.InstallationId = new SelectList(db.Installations, "InstallationId", "ShortcutName", workSheet.Device.InstallationId);
             ViewBag.LoadId = new SelectList(db.Loads, "LoadId", "Name", workSheet.Device.LoadId);
             ViewBag.OperatingModeId = new SelectList(db.OperatingModes, "OperatingModeId", "Name", workSheet.Device.OperatingModeId);

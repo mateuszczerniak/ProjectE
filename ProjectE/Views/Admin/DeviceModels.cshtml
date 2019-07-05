@@ -38,6 +38,9 @@
         <th>
             @Html.DisplayNameFor(model => model.Manufacturer.Name)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DeviceType.Name)
+        </th>
         <th></th>
     </tr>
 
@@ -69,6 +72,9 @@
     </td>
     <td>
         @Html.DisplayFor(modelItem => item.Manufacturer.Name)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.DeviceType.Name)
     </td>
     <td>
         @Html.ActionLink("Edit", "DeviceModelEdit", new { id = item.DeviceModelId }) |

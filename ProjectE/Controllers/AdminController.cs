@@ -399,7 +399,7 @@ namespace ProjectE.Controllers
         //device
         public ActionResult Devices()
         {
-            var device = db.Devices.Include(b => b.Installation).Include(b => b.DeviceType).Include(b => b.DeviceModel).Include(b => b.BatteryPack).Include(b=>b.Load).Include(b => b.OperatingMode);
+            var device = db.Devices.Include(b => b.Installation).Include(b => b.DeviceModel).Include(b => b.BatteryPack).Include(b=>b.Load).Include(b => b.OperatingMode);
             return View(device.ToList());
         }
         public ActionResult DeviceDetails(int? id)
@@ -441,7 +441,6 @@ namespace ProjectE.Controllers
             ViewBag.LoadId = new SelectList(db.Loads, "LoadId", "Name", device.LoadId);
             ViewBag.OperatingModeId = new SelectList(db.OperatingModes, "OperatingModeId", "Name", device.OperatingModeId);
             ViewBag.DeviceModelId = new SelectList(db.DeviceModels, "DeviceModelId", "Name", device.DeviceModelId);
-            ViewBag.DeviceTypeId = new SelectList(db.DeviceTypes, "DeviceTypeId", "Name", device.DeviceTypeId);
             return View(device);
         }
         public ActionResult DeviceEdit(int? id)
@@ -460,7 +459,6 @@ namespace ProjectE.Controllers
             ViewBag.LoadId = new SelectList(db.Loads, "LoadId", "Name", device.LoadId);
             ViewBag.OperatingModeId = new SelectList(db.OperatingModes, "OperatingModeId", "Name", device.OperatingModeId);
             ViewBag.DeviceModelId = new SelectList(db.DeviceModels, "DeviceModelId", "Name", device.DeviceModelId);
-            ViewBag.DeviceTypeId = new SelectList(db.DeviceTypes, "DeviceTypeId", "Name", device.DeviceTypeId);
             return View(device);
         }
         [HttpPost]
@@ -478,7 +476,6 @@ namespace ProjectE.Controllers
             ViewBag.LoadId = new SelectList(db.Loads, "LoadId", "Name", device.LoadId);
             ViewBag.OperatingModeId = new SelectList(db.OperatingModes, "OperatingModeId", "Name", device.OperatingModeId);
             ViewBag.DeviceModelId = new SelectList(db.DeviceModels, "DeviceModelId", "Name", device.DeviceModelId);
-            ViewBag.DeviceTypeId = new SelectList(db.DeviceTypes, "DeviceTypeId", "Name", device.DeviceTypeId);
             return View(device);
         }
         public ActionResult DeviceDelete(int? id)
@@ -576,7 +573,7 @@ namespace ProjectE.Controllers
         //batterypack
         public ActionResult BatteryPacks()
         {
-            var batteryPacks = db.BatteryPacks.Include(b => b.Owner).Include(b => b.Battery);
+            var batteryPacks = db.BatteryPacks.Include(b => b.Battery);
             return View(batteryPacks.ToList());
         }
         public ActionResult BatteryPackDetails(int? id)
@@ -594,13 +591,12 @@ namespace ProjectE.Controllers
         }
         public ActionResult BatteryPackCreate()
         {
-            ViewBag.OwnerId = new SelectList(db.Owners, "OwnerId", "Name");
             ViewBag.BatteryId = new SelectList(db.Batteries, "BatteryId", "BatteryType");
             return View();
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult BatteryPackCreate([Bind(Include = "BatteryPackId,ShortcutName,TechnologicalName,MonoblockNumber,StringNumber,DischargeCurrent1,DischargeCurrent2,DischargeCurrent3,ProductionYear,AssemblyDate,LastReviewDate,OwnerId,BatteryId")] BatteryPack batteryPack)
+        public ActionResult BatteryPackCreate([Bind(Include = "BatteryPackId,ShortcutName,TechnologicalName,MonoblockNumber,StringNumber,DischargeCurrent1,DischargeCurrent2,DischargeCurrent3,ProductionYear,AssemblyDate,LastReviewDate,BatteryId")] BatteryPack batteryPack)
         {
             if (ModelState.IsValid)
             {
@@ -609,7 +605,6 @@ namespace ProjectE.Controllers
                 return RedirectToAction("BatteryPacks");
             }
 
-            ViewBag.OwnerId = new SelectList(db.Owners, "OwnerId", "Name", batteryPack.OwnerId);
             ViewBag.BatteryId = new SelectList(db.Batteries, "BatteryId", "BatteryType", batteryPack.BatteryId);
             return View(batteryPack);
         }
@@ -624,13 +619,12 @@ namespace ProjectE.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.OwnerId = new SelectList(db.Owners, "OwnerId", "Name", batteryPack.OwnerId);
             ViewBag.BatteryId = new SelectList(db.Batteries, "BatteryId", "BatteryType", batteryPack.BatteryId);
             return View(batteryPack);
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult BatteryPackEdit([Bind(Include = "OwnerId,BatteryId")] BatteryPack batteryPack)
+        public ActionResult BatteryPackEdit([Bind(Include = "BatteryId")] BatteryPack batteryPack)
         {
             if (ModelState.IsValid)
             {
@@ -638,7 +632,6 @@ namespace ProjectE.Controllers
                 db.SaveChanges();
                 return RedirectToAction("BatteryPacks");
             }
-            ViewBag.OwnerId = new SelectList(db.Owners, "OwnerId", "Name", batteryPack.OwnerId);
             ViewBag.BatteryId = new SelectList(db.Batteries, "BatteryId", "BatteryType", batteryPack.BatteryId);
             return View(batteryPack);
         }
@@ -665,75 +658,75 @@ namespace ProjectE.Controllers
             return RedirectToAction("BatteryPacks");
         }
         //owners
-        public ActionResult Owners()
-        {
-            return View(db.Owners.ToList());
-        }
-        public ActionResult OwnerCreate()
-        {
-            return View();
-        }
+        //public ActionResult Owners()
+        //{
+        //    return View(db.Owners.ToList());
+        //}
+        //public ActionResult OwnerCreate()
+        //{
+        //    return View();
+        //}
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult OwnerCreate([Bind(Include = "OwnerId,Name")] Owner owner)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Owners.Add(owner);
-                db.SaveChanges();
-                return RedirectToAction("Owners");
-            }
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult OwnerCreate([Bind(Include = "OwnerId,Name")] Owner owner)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        db.Owners.Add(owner);
+        //        db.SaveChanges();
+        //        return RedirectToAction("Owners");
+        //    }
 
-            return View(owner);
-        }
-        public ActionResult OwnerEdit(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Owner owner = db.Owners.Find(id);
-            if (owner == null)
-            {
-                return HttpNotFound();
-            }
-            return View(owner);
-        }
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult OwnerEdit([Bind(Include = "OwnerId,Name")] Owner owner)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(owner).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Owners");
-            }
-            return View(owner);
-        }
-        public ActionResult OwnerDelete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Owner owner = db.Owners.Find(id);
-            if (owner == null)
-            {
-                return HttpNotFound();
-            }
-            return View(owner);
-        }
-        [HttpPost, ActionName("OwnerDelete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult OwnerDeleteConfirmed(int id)
-        {
-            Owner owner = db.Owners.Find(id);
-            db.Owners.Remove(owner);
-            db.SaveChanges();
-            return RedirectToAction("Owners");
-        }
+        //    return View(owner);
+        //}
+        //public ActionResult OwnerEdit(int? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //    }
+        //    Owner owner = db.Owners.Find(id);
+        //    if (owner == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    return View(owner);
+        //}
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult OwnerEdit([Bind(Include = "OwnerId,Name")] Owner owner)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        db.Entry(owner).State = EntityState.Modified;
+        //        db.SaveChanges();
+        //        return RedirectToAction("Owners");
+        //    }
+        //    return View(owner);
+        //}
+        //public ActionResult OwnerDelete(int? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //    }
+        //    Owner owner = db.Owners.Find(id);
+        //    if (owner == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    return View(owner);
+        //}
+        //[HttpPost, ActionName("OwnerDelete")]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult OwnerDeleteConfirmed(int id)
+        //{
+        //    Owner owner = db.Owners.Find(id);
+        //    db.Owners.Remove(owner);
+        //    db.SaveChanges();
+        //    return RedirectToAction("Owners");
+        //}
         //tooltype
         public ActionResult ToolTypes()
         {
@@ -869,7 +862,6 @@ namespace ProjectE.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Tools");
             }
-            ViewBag.ManufacturerId = new SelectList(db.Owners, "ManufacturerId", "Name", tool.ManufacturerId);
             ViewBag.ToolTypeId = new SelectList(db.ToolTypes, "ToolTypeId", "Name", tool.ToolTypeId);
             return View(tool);
         }
@@ -1038,7 +1030,7 @@ namespace ProjectE.Controllers
         //devicemodel
         public ActionResult DeviceModels()
         {
-            var deviceModels = db.DeviceModels.Include(b => b.Manufacturer);
+            var deviceModels = db.DeviceModels.Include(b => b.Manufacturer).Include(b => b.DeviceType);
             return View(deviceModels.ToList());
         }
         public ActionResult DeviceModelDetails(int? id)
@@ -1056,12 +1048,13 @@ namespace ProjectE.Controllers
         }
         public ActionResult DeviceModelCreate()
         {
+            ViewBag.DeviceTypeId = new SelectList(db.DeviceTypes, "DeviceTypeId", "Name");
             ViewBag.ManufacturerId = new SelectList(db.Manufacturers, "ManufacturerId", "Name");
             return View();
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult DeviceModelCreate([Bind(Include = "DeviceModelId,Name,Power,InputVoltage,OutputVoltage,InputCurrent,OutputCurrent,InputPhaseNumber,OutputPhaseNumber,ManufacturerId")] DeviceModel deviceModel)
+        public ActionResult DeviceModelCreate([Bind(Include = "DeviceModelId,Name,Power,InputVoltage,OutputVoltage,InputCurrent,OutputCurrent,InputPhaseNumber,OutputPhaseNumber,ManufacturerId,DeviceTypeId")] DeviceModel deviceModel)
         {
             if (ModelState.IsValid)
             {
@@ -1070,6 +1063,7 @@ namespace ProjectE.Controllers
                 return RedirectToAction("DeviceModels");
             }
 
+            ViewBag.DeviceTypeId = new SelectList(db.DeviceTypes, "DeviceTypeId", "Name", deviceModel.DeviceTypeId);
             ViewBag.ManufacturerId = new SelectList(db.Manufacturers, "ManufacturerId", "Name", deviceModel.ManufacturerId);
             return View(deviceModel);
         }
@@ -1084,12 +1078,13 @@ namespace ProjectE.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.DeviceTypeId = new SelectList(db.DeviceTypes, "DeviceTypeId", "Name", deviceModel.DeviceTypeId);
             ViewBag.ManufacturerId = new SelectList(db.Manufacturers, "ManufacturerId", "Name", deviceModel.ManufacturerId);
             return View(deviceModel);
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult DeviceModelEdit([Bind(Include = "DeviceModelId,Name,Power,InputVoltage,OutputVoltage,InputCurrent,OutputCurrent,InputPhaseNumber,OutputPhaseNumber,ManufacturerId")] DeviceModel deviceModel)
+        public ActionResult DeviceModelEdit([Bind(Include = "DeviceModelId,Name,Power,InputVoltage,OutputVoltage,InputCurrent,OutputCurrent,InputPhaseNumber,OutputPhaseNumber,ManufacturerId,DeviceTypeId")] DeviceModel deviceModel)
         {
             if (ModelState.IsValid)
             {
@@ -1097,6 +1092,7 @@ namespace ProjectE.Controllers
                 db.SaveChanges();
                 return RedirectToAction("DeviceModels");
             }
+            ViewBag.DeviceTypeId = new SelectList(db.DeviceTypes, "DeviceTypeId", "Name", deviceModel.DeviceTypeId);
             ViewBag.ManufacturerId = new SelectList(db.Manufacturers, "ManufacturerId", "Name", deviceModel.ManufacturerId);
             return View(deviceModel);
         }

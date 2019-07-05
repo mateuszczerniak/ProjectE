@@ -131,9 +131,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201906282049290_008.cs" />
-    <Compile Include="Migrations\201906282049290_008.Designer.cs">
-      <DependentUpon>201906282049290_008.cs</DependentUpon>
+    <Compile Include="Migrations\201907051143402_001.cs" />
+    <Compile Include="Migrations\201907051143402_001.Designer.cs">
+      <DependentUpon>201907051143402_001.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Battery.cs" />
@@ -147,7 +147,6 @@
     <Compile Include="Models\Load.cs" />
     <Compile Include="Models\Manufacturer.cs" />
     <Compile Include="Models\OperatingMode.cs" />
-    <Compile Include="Models\Owner.cs" />
     <Compile Include="Models\Report.cs" />
     <Compile Include="Models\Tool.cs" />
     <Compile Include="Models\ToolType.cs" />
@@ -281,8 +280,8 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201906282049290_008.resx">
-      <DependentUpon>201906282049290_008.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201907051143402_001.resx">
+      <DependentUpon>201907051143402_001.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

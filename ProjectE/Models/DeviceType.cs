@@ -10,6 +10,6 @@ namespace ProjectE.Models
         public int DeviceTypeId { get; set; }
         public string Name { get; set; }
         
-        public virtual ICollection<Device> Devices { get; set; }
+        public virtual ICollection<DeviceModel> DeviceModels { get; set; }
     }
 }

@@ -3,7 +3,7 @@ namespace ProjectE.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class _008 : DbMigration
+    public partial class _001 : DbMigration
     {
         public override void Up()
         {
@@ -40,13 +40,10 @@ namespace ProjectE.Migrations
                         ProductionYear = c.DateTime(nullable: false),
                         AssemblyDate = c.DateTime(nullable: false),
                         LastReviewDate = c.DateTime(nullable: false),
-                        OwnerId = c.Int(nullable: false),
                         BatteryId = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.BatteryPackId)
                 .ForeignKey("dbo.Battery", t => t.BatteryId, cascadeDelete: true)
-                .ForeignKey("dbo.Owner", t => t.OwnerId, cascadeDelete: true)
-                .Index(t => t.OwnerId)
                 .Index(t => t.BatteryId);
             
             CreateTable(
@@ -66,12 +63,10 @@ namespace ProjectE.Migrations
                         LoadId = c.Int(nullable: false),
                         OperatingModeId = c.Int(nullable: false),
                         DeviceModelId = c.Int(nullable: false),
-                        DeviceTypeId = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.DeviceId)
                 .ForeignKey("dbo.BatteryPack", t => t.BatteryPackId, cascadeDelete: true)
                 .ForeignKey("dbo.DeviceModel", t => t.DeviceModelId, cascadeDelete: true)
-                .ForeignKey("dbo.DeviceType", t => t.DeviceTypeId, cascadeDelete: true)
                 .ForeignKey("dbo.Installation", t => t.InstallationId, cascadeDelete: true)
                 .ForeignKey("dbo.Load", t => t.LoadId, cascadeDelete: true)
                 .ForeignKey("dbo.OperatingMode", t => t.OperatingModeId, cascadeDelete: true)
@@ -79,8 +74,7 @@ namespace ProjectE.Migrations
                 .Index(t => t.BatteryPackId)
                 .Index(t => t.LoadId)
                 .Index(t => t.OperatingModeId)
-                .Index(t => t.DeviceModelId)
-                .Index(t => t.DeviceTypeId);
+                .Index(t => t.DeviceModelId);
             
             CreateTable(
                 "dbo.DeviceModel",
@@ -96,10 +90,22 @@ namespace ProjectE.Migrations
                         InputPhaseNumber = c.Int(nullable: false),
                         OutputPhaseNumber = c.Int(nullable: false),
                         ManufacturerId = c.Int(),
+                        DeviceTypeId = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.DeviceModelId)
+                .ForeignKey("dbo.DeviceType", t => t.DeviceTypeId, cascadeDelete: true)
                 .ForeignKey("dbo.Manufacturer", t => t.ManufacturerId)
-                .Index(t => t.ManufacturerId);
+                .Index(t => t.ManufacturerId)
+                .Index(t => t.DeviceTypeId);
+            
+            CreateTable(
+                "dbo.DeviceType",
+                c => new
+                    {
+                        DeviceTypeId = c.Int(nullable: false, identity: true),
+                        Name = c.String(),
+                    })
+                .PrimaryKey(t => t.DeviceTypeId);
             
             CreateTable(
                 "dbo.Manufacturer",
@@ -134,15 +140,6 @@ namespace ProjectE.Migrations
                         Name = c.String(),
                     })
                 .PrimaryKey(t => t.ToolTypeId);
-            
-            CreateTable(
-                "dbo.DeviceType",
-                c => new
-                    {
-                        DeviceTypeId = c.Int(nullable: false, identity: true),
-                        Name = c.String(),
-                    })
-                .PrimaryKey(t => t.DeviceTypeId);
             
             CreateTable(
                 "dbo.Installation",
@@ -187,15 +184,6 @@ namespace ProjectE.Migrations
                 .Index(t => t.WorkReason_WorkReasonId);
             
             CreateTable(
-                "dbo.Owner",
-                c => new
-                    {
-                        OwnerId = c.Int(nullable: false, identity: true),
-                        Name = c.String(),
-                    })
-                .PrimaryKey(t => t.OwnerId);
-            
-            CreateTable(
                 "dbo.BatterySpecies",
                 c => new
                     {
@@ -220,44 +208,41 @@ namespace ProjectE.Migrations
             DropForeignKey("dbo.WorkSheet", "WorkReason_WorkReasonId", "dbo.WorkReason");
             DropForeignKey("dbo.Battery", "ManufacturerId", "dbo.Manufacturer");
             DropForeignKey("dbo.Battery", "BatterySpeciesId", "dbo.BatterySpecies");
-            DropForeignKey("dbo.BatteryPack", "OwnerId", "dbo.Owner");
             DropForeignKey("dbo.WorkSheet", "DeviceId", "dbo.Device");
             DropForeignKey("dbo.Device", "OperatingModeId", "dbo.OperatingMode");
             DropForeignKey("dbo.Device", "LoadId", "dbo.Load");
             DropForeignKey("dbo.Device", "InstallationId", "dbo.Installation");
-            DropForeignKey("dbo.Device", "DeviceTypeId", "dbo.DeviceType");
             DropForeignKey("dbo.Device", "DeviceModelId", "dbo.DeviceModel");
             DropForeignKey("dbo.DeviceModel", "ManufacturerId", "dbo.Manufacturer");
             DropForeignKey("dbo.Tool", "ToolTypeId", "dbo.ToolType");
             DropForeignKey("dbo.Tool", "ManufacturerId", "dbo.Manufacturer");
+            DropForeignKey("dbo.DeviceModel", "DeviceTypeId", "dbo.DeviceType");
             DropForeignKey("dbo.Device", "BatteryPackId", "dbo.BatteryPack");
             DropForeignKey("dbo.BatteryPack", "BatteryId", "dbo.Battery");
             DropIndex("dbo.WorkSheet", new[] { "WorkReason_WorkReasonId" });
             DropIndex("dbo.WorkSheet", new[] { "DeviceId" });
             DropIndex("dbo.Tool", new[] { "ToolTypeId" });
             DropIndex("dbo.Tool", new[] { "ManufacturerId" });
+            DropIndex("dbo.DeviceModel", new[] { "DeviceTypeId" });
             DropIndex("dbo.DeviceModel", new[] { "ManufacturerId" });
-            DropIndex("dbo.Device", new[] { "DeviceTypeId" });
             DropIndex("dbo.Device", new[] { "DeviceModelId" });
             DropIndex("dbo.Device", new[] { "OperatingModeId" });
             DropIndex("dbo.Device", new[] { "LoadId" });
             DropIndex("dbo.Device", new[] { "BatteryPackId" });
             DropIndex("dbo.Device", new[] { "InstallationId" });
             DropIndex("dbo.BatteryPack", new[] { "BatteryId" });
-            DropIndex("dbo.BatteryPack", new[] { "OwnerId" });
             DropIndex("dbo.Battery", new[] { "BatterySpeciesId" });
             DropIndex("dbo.Battery", new[] { "ManufacturerId" });
             DropTable("dbo.WorkReason");
             DropTable("dbo.BatterySpecies");
-            DropTable("dbo.Owner");
             DropTable("dbo.WorkSheet");
             DropTable("dbo.OperatingMode");
             DropTable("dbo.Load");
             DropTable("dbo.Installation");
-            DropTable("dbo.DeviceType");
             DropTable("dbo.ToolType");
             DropTable("dbo.Tool");
             DropTable("dbo.Manufacturer");
+            DropTable("dbo.DeviceType");
             DropTable("dbo.DeviceModel");
             DropTable("dbo.Device");
             DropTable("dbo.BatteryPack");
