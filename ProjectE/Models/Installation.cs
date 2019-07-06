@@ -13,5 +13,6 @@ namespace ProjectE.Models
         public string Name { get; set; }
 
         public virtual ICollection<Device> Devices { get; set; }
+        public virtual ICollection<Installation> Installations { get; set; }
     }
 }

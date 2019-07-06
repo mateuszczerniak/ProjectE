@@ -418,6 +418,15 @@ namespace ProjectE.Controllers
         public ActionResult DeviceCreate()
         {
             ViewBag.InstallationId = new SelectList(db.Installations, "InstallationId", "Name");
+
+            //var batteryPacks = (from c in db.BatteryPacks
+            //               select new SelectListItem
+            //               {
+            //                   Text = c. + " " + m.LastName,
+            //                   Value = m.ID.ToString()
+            //               });
+            //ViewBag.ClientsList = new SelectList(clients)
+
             ViewBag.BatteryPackId = new SelectList(db.BatteryPacks, "BatteryPackId", "ShortcutName");
             ViewBag.LoadId = new SelectList(db.Loads, "LoadId", "Name");
             ViewBag.OperatingModeId = new SelectList(db.OperatingModes, "OperatingModeId", "Name");

@@ -34,6 +34,10 @@ namespace ProjectE.Models
         public int BatteryId { get; set; }
         public virtual Battery Battery { get; set; }
 
+        [ForeignKey("Installation")]
+        public int InstallationId { get; set; }
+        public virtual Installation Installation { get; set; }
+
         public virtual ICollection<Device> Devices { get; set; }
     }
 }
