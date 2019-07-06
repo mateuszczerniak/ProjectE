@@ -12,6 +12,9 @@
 <table class="table">
     <tr>
         <th>
+            @Html.DisplayNameFor(model => model.Installation.ShortcutName)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.ShortcutName)
         </th>
         <th>
@@ -49,6 +52,9 @@
 
 @foreach (var item in Model) {
 <tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Installation.ShortcutName)
+    </td>
     <td>
         @Html.DisplayFor(modelItem => item.ShortcutName)
     </td>

@@ -417,17 +417,17 @@ namespace ProjectE.Controllers
         }
         public ActionResult DeviceCreate()
         {
-            ViewBag.InstallationId = new SelectList(db.Installations, "InstallationId", "Name");
+            ViewBag.InstallationId = new SelectList(db.Installations, "InstallationId", "ShortcutName");
 
-            //var batteryPacks = (from c in db.BatteryPacks
-            //               select new SelectListItem
-            //               {
-            //                   Text = c. + " " + m.LastName,
-            //                   Value = m.ID.ToString()
-            //               });
-            //ViewBag.ClientsList = new SelectList(clients)
+            var batteryPacks = (from c in db.BatteryPacks
+                                select new SelectListItem
+                                {
+                                    Text = c.Installation.ShortcutName + " " + c.ShortcutName,
+                                    Value = c.BatteryPackId.ToString()
+                                });
+            ViewBag.BatteryPackId = new SelectList(batteryPacks, "Value", "Text");
 
-            ViewBag.BatteryPackId = new SelectList(db.BatteryPacks, "BatteryPackId", "ShortcutName");
+            //ViewBag.BatteryPackId = new SelectList(db.BatteryPacks, "BatteryPackId", "ShortcutName");
             ViewBag.LoadId = new SelectList(db.Loads, "LoadId", "Name");
             ViewBag.OperatingModeId = new SelectList(db.OperatingModes, "OperatingModeId", "Name");
             ViewBag.DeviceModelId = new SelectList(db.DeviceModels, "DeviceModelId", "Name");
@@ -582,7 +582,7 @@ namespace ProjectE.Controllers
         //batterypack
         public ActionResult BatteryPacks()
         {
-            var batteryPacks = db.BatteryPacks.Include(b => b.Battery);
+            var batteryPacks = db.BatteryPacks.Include(b => b.Battery).Include(b => b.Installation);
             return View(batteryPacks.ToList());
         }
         public ActionResult BatteryPackDetails(int? id)
@@ -601,11 +601,12 @@ namespace ProjectE.Controllers
         public ActionResult BatteryPackCreate()
         {
             ViewBag.BatteryId = new SelectList(db.Batteries, "BatteryId", "BatteryType");
+            ViewBag.InstallationId = new SelectList(db.Installations, "InstallationId", "ShortcutName");
             return View();
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult BatteryPackCreate([Bind(Include = "BatteryPackId,ShortcutName,TechnologicalName,MonoblockNumber,StringNumber,DischargeCurrent1,DischargeCurrent2,DischargeCurrent3,ProductionYear,AssemblyDate,LastReviewDate,BatteryId")] BatteryPack batteryPack)
+        public ActionResult BatteryPackCreate([Bind(Include = "BatteryPackId,ShortcutName,TechnologicalName,MonoblockNumber,StringNumber,DischargeCurrent1,DischargeCurrent2,DischargeCurrent3,ProductionYear,AssemblyDate,LastReviewDate,BatteryId,InstallationId")] BatteryPack batteryPack)
         {
             if (ModelState.IsValid)
             {
@@ -615,6 +616,7 @@ namespace ProjectE.Controllers
             }
 
             ViewBag.BatteryId = new SelectList(db.Batteries, "BatteryId", "BatteryType", batteryPack.BatteryId);
+            ViewBag.InstallationId = new SelectList(db.Installations, "InstallationId", "ShortcutName", batteryPack.InstallationId);
             return View(batteryPack);
         }
         public ActionResult BatteryPackEdit(int? id)
@@ -629,11 +631,12 @@ namespace ProjectE.Controllers
                 return HttpNotFound();
             }
             ViewBag.BatteryId = new SelectList(db.Batteries, "BatteryId", "BatteryType", batteryPack.BatteryId);
+            ViewBag.InstallationId = new SelectList(db.Installations, "InstallationId", "ShortcutName", batteryPack.InstallationId);
             return View(batteryPack);
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult BatteryPackEdit([Bind(Include = "BatteryId")] BatteryPack batteryPack)
+        public ActionResult BatteryPackEdit([Bind(Include = "BatteryId,BatteryType,InstallationId")] BatteryPack batteryPack)
         {
             if (ModelState.IsValid)
             {
@@ -642,6 +645,7 @@ namespace ProjectE.Controllers
                 return RedirectToAction("BatteryPacks");
             }
             ViewBag.BatteryId = new SelectList(db.Batteries, "BatteryId", "BatteryType", batteryPack.BatteryId);
+            ViewBag.InstallationId = new SelectList(db.Installations, "InstallationId", "ShortcutName", batteryPack.InstallationId);
             return View(batteryPack);
         }
         public ActionResult BatteryPackDelete(int? id)

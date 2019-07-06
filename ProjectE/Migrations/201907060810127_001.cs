@@ -20,8 +20,8 @@ namespace ProjectE.Migrations
                         BatterySpeciesId = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.BatteryId)
-                .ForeignKey("dbo.BatterySpecies", t => t.BatterySpeciesId, cascadeDelete: true)
-                .ForeignKey("dbo.Manufacturer", t => t.ManufacturerId, cascadeDelete: true)
+                .ForeignKey("dbo.BatterySpecies", t => t.BatterySpeciesId)
+                .ForeignKey("dbo.Manufacturer", t => t.ManufacturerId)
                 .Index(t => t.ManufacturerId)
                 .Index(t => t.BatterySpeciesId);
             
@@ -41,10 +41,13 @@ namespace ProjectE.Migrations
                         AssemblyDate = c.DateTime(nullable: false),
                         LastReviewDate = c.DateTime(nullable: false),
                         BatteryId = c.Int(nullable: false),
+                        InstallationId = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.BatteryPackId)
-                .ForeignKey("dbo.Battery", t => t.BatteryId, cascadeDelete: true)
-                .Index(t => t.BatteryId);
+                .ForeignKey("dbo.Battery", t => t.BatteryId)
+                .ForeignKey("dbo.Installation", t => t.InstallationId)
+                .Index(t => t.BatteryId)
+                .Index(t => t.InstallationId);
             
             CreateTable(
                 "dbo.Device",
@@ -65,11 +68,11 @@ namespace ProjectE.Migrations
                         DeviceModelId = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.DeviceId)
-                .ForeignKey("dbo.BatteryPack", t => t.BatteryPackId, cascadeDelete: true)
-                .ForeignKey("dbo.DeviceModel", t => t.DeviceModelId, cascadeDelete: true)
-                .ForeignKey("dbo.Installation", t => t.InstallationId, cascadeDelete: true)
-                .ForeignKey("dbo.Load", t => t.LoadId, cascadeDelete: true)
-                .ForeignKey("dbo.OperatingMode", t => t.OperatingModeId, cascadeDelete: true)
+                .ForeignKey("dbo.BatteryPack", t => t.BatteryPackId)
+                .ForeignKey("dbo.DeviceModel", t => t.DeviceModelId)
+                .ForeignKey("dbo.Installation", t => t.InstallationId)
+                .ForeignKey("dbo.Load", t => t.LoadId)
+                .ForeignKey("dbo.OperatingMode", t => t.OperatingModeId)
                 .Index(t => t.InstallationId)
                 .Index(t => t.BatteryPackId)
                 .Index(t => t.LoadId)
@@ -93,7 +96,7 @@ namespace ProjectE.Migrations
                         DeviceTypeId = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.DeviceModelId)
-                .ForeignKey("dbo.DeviceType", t => t.DeviceTypeId, cascadeDelete: true)
+                .ForeignKey("dbo.DeviceType", t => t.DeviceTypeId)
                 .ForeignKey("dbo.Manufacturer", t => t.ManufacturerId)
                 .Index(t => t.ManufacturerId)
                 .Index(t => t.DeviceTypeId);
@@ -127,8 +130,8 @@ namespace ProjectE.Migrations
                         ToolTypeId = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.ToolId)
-                .ForeignKey("dbo.Manufacturer", t => t.ManufacturerId, cascadeDelete: true)
-                .ForeignKey("dbo.ToolType", t => t.ToolTypeId, cascadeDelete: true)
+                .ForeignKey("dbo.Manufacturer", t => t.ManufacturerId)
+                .ForeignKey("dbo.ToolType", t => t.ToolTypeId)
                 .Index(t => t.ManufacturerId)
                 .Index(t => t.ToolTypeId);
             
@@ -148,8 +151,11 @@ namespace ProjectE.Migrations
                         InstallationId = c.Int(nullable: false, identity: true),
                         ShortcutName = c.String(),
                         Name = c.String(),
+                        Installation_InstallationId = c.Int(),
                     })
-                .PrimaryKey(t => t.InstallationId);
+                .PrimaryKey(t => t.InstallationId)
+                .ForeignKey("dbo.Installation", t => t.Installation_InstallationId)
+                .Index(t => t.Installation_InstallationId);
             
             CreateTable(
                 "dbo.Load",
@@ -178,7 +184,7 @@ namespace ProjectE.Migrations
                         WorkReason_WorkReasonId = c.Int(),
                     })
                 .PrimaryKey(t => t.WorkSheetId)
-                .ForeignKey("dbo.Device", t => t.DeviceId, cascadeDelete: true)
+                .ForeignKey("dbo.Device", t => t.DeviceId)
                 .ForeignKey("dbo.WorkReason", t => t.WorkReason_WorkReasonId)
                 .Index(t => t.DeviceId)
                 .Index(t => t.WorkReason_WorkReasonId);
@@ -208,10 +214,12 @@ namespace ProjectE.Migrations
             DropForeignKey("dbo.WorkSheet", "WorkReason_WorkReasonId", "dbo.WorkReason");
             DropForeignKey("dbo.Battery", "ManufacturerId", "dbo.Manufacturer");
             DropForeignKey("dbo.Battery", "BatterySpeciesId", "dbo.BatterySpecies");
+            DropForeignKey("dbo.BatteryPack", "InstallationId", "dbo.Installation");
             DropForeignKey("dbo.WorkSheet", "DeviceId", "dbo.Device");
             DropForeignKey("dbo.Device", "OperatingModeId", "dbo.OperatingMode");
             DropForeignKey("dbo.Device", "LoadId", "dbo.Load");
             DropForeignKey("dbo.Device", "InstallationId", "dbo.Installation");
+            DropForeignKey("dbo.Installation", "Installation_InstallationId", "dbo.Installation");
             DropForeignKey("dbo.Device", "DeviceModelId", "dbo.DeviceModel");
             DropForeignKey("dbo.DeviceModel", "ManufacturerId", "dbo.Manufacturer");
             DropForeignKey("dbo.Tool", "ToolTypeId", "dbo.ToolType");
@@ -221,6 +229,7 @@ namespace ProjectE.Migrations
             DropForeignKey("dbo.BatteryPack", "BatteryId", "dbo.Battery");
             DropIndex("dbo.WorkSheet", new[] { "WorkReason_WorkReasonId" });
             DropIndex("dbo.WorkSheet", new[] { "DeviceId" });
+            DropIndex("dbo.Installation", new[] { "Installation_InstallationId" });
             DropIndex("dbo.Tool", new[] { "ToolTypeId" });
             DropIndex("dbo.Tool", new[] { "ManufacturerId" });
             DropIndex("dbo.DeviceModel", new[] { "DeviceTypeId" });
@@ -230,6 +239,7 @@ namespace ProjectE.Migrations
             DropIndex("dbo.Device", new[] { "LoadId" });
             DropIndex("dbo.Device", new[] { "BatteryPackId" });
             DropIndex("dbo.Device", new[] { "InstallationId" });
+            DropIndex("dbo.BatteryPack", new[] { "InstallationId" });
             DropIndex("dbo.BatteryPack", new[] { "BatteryId" });
             DropIndex("dbo.Battery", new[] { "BatterySpeciesId" });
             DropIndex("dbo.Battery", new[] { "ManufacturerId" });
