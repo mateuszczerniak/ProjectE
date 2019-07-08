@@ -19,7 +19,7 @@ namespace ProjectE.Models
         public int OutputPhaseNumber { get; set; }
 
         [ForeignKey("Manufacturer")]
-        public int? ManufacturerId { get; set; }
+        public int ManufacturerId { get; set; }
         public virtual Manufacturer Manufacturer { get; set; }
 
         [ForeignKey("DeviceType")]

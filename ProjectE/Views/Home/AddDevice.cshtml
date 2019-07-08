@@ -1,10 +1,10 @@
 ﻿@model ProjectE.Models.Device
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Karta pracy";
 }
 
-<h2>Edit</h2>
+<h2>Karta pracy</h2>
 
 @using (Html.BeginForm())
 {
@@ -15,12 +15,8 @@
         <div class="col-xs-6" style="border: thin solid black">
             <h3>Urządzenie</h3>
             <div class="row">
-                @Html.LabelFor(model => model.Installation.ShortcutName, "Instalacja", htmlAttributes: new { @class = "control-label col-md-5" })
-                @Html.DisplayFor(model => model.Installation.ShortcutName)
-            </div>
-            <div class="row">
-                @Html.LabelFor(model => model.ShortcutName, "Nazwa", htmlAttributes: new { @class = "control-label col-md-5" })
-                @Html.DisplayFor(model => model.ShortcutName)
+                @Html.LabelFor(model => model.Installation.ShortcutName, "Nazwa urządzenia", htmlAttributes: new { @class = "control-label col-md-5" })
+                @Html.DisplayFor(model => model.Installation.ShortcutName)-@Html.DisplayFor(model => model.ShortcutName)
             </div>
             <div class="row">
                 @Html.LabelFor(model => model.DeviceModel.Name, "Model", htmlAttributes: new { @class = "control-label col-md-5" })
@@ -31,12 +27,24 @@
                 @Html.DisplayFor(model => model.DeviceModel.Manufacturer.Name)
             </div>
             <div class="row">
-                @Html.LabelFor(model => model.DeviceModel.Power, "Moc", htmlAttributes: new { @class = "control-label col-md-5" })
-                @Html.DisplayFor(model => model.DeviceModel.Power)
+                @Html.LabelFor(model => model.ProductionYear, "Rok produkcji", htmlAttributes: new { @class = "control-label col-md-5" })
+                @Html.DisplayFor(model => model.ProductionYear)
             </div>
             <div class="row">
                 @Html.LabelFor(model => model.LastReviewDate, "Data ostatniego przeglądu", htmlAttributes: new { @class = "control-label col-md-5" })
                 @Html.DisplayFor(model => model.LastReviewDate)
+            </div>
+            <div class="row">
+                @Html.LabelFor(model => model.OperatingMode.Name, "Tryb pracy", htmlAttributes: new { @class = "control-label col-md-5" })
+                @Html.DisplayFor(model => model.OperatingMode.Name)
+            </div>
+            <div class="row">
+                @Html.LabelFor(model => model.Load, "Rodzaj odbioru", htmlAttributes: new { @class = "control-label col-md-5" })
+                @Html.DisplayFor(model => model.Load.Name)
+            </div>
+            <div class="row">
+                @Html.LabelFor(model => model.SerialNumber, "Numer seryjny", htmlAttributes: new { @class = "control-label col-md-5" })
+                @Html.DisplayFor(model => model.SerialNumber)
             </div>
             <div class="row">
                 @Html.LabelFor(model => model.PrimarySupply, "Zasilanie podstawowe", htmlAttributes: new { @class = "control-label col-md-5" })
@@ -46,15 +54,15 @@
                 @Html.LabelFor(model => model.SecondarySupply, "Zasilanie rezerwowe", htmlAttributes: new { @class = "control-label col-md-5" })
                 @Html.DisplayFor(model => model.SecondarySupply)
             </div>
-            <div class="row">
-                @Html.LabelFor(model => model.SerialNumber, "Numer seryjny", htmlAttributes: new { @class = "control-label col-md-5" })
-                @Html.DisplayFor(model => model.SerialNumber)
-            </div>
         </div>
         <div class="col-xs-6" style="border: thin solid black">
             <h3>Bateria</h3>
             <div class="row">
-                @Html.LabelFor(model => model.BatteryPack.TechnologicalName, "Numer seryjny", htmlAttributes: new { @class = "control-label col-md-5" })
+                @Html.LabelFor(model => model.Installation.ShortcutName, "Nazwa baterii", htmlAttributes: new { @class = "control-label col-md-5" })
+                @Html.DisplayFor(model => model.Installation.ShortcutName)-@Html.DisplayFor(model => model.BatteryPack.ShortcutName)
+            </div>
+            <div class="row">
+                @Html.LabelFor(model => model.BatteryPack.TechnologicalName, "Nazwa technologiczna", htmlAttributes: new { @class = "control-label col-md-5" })
                 @Html.DisplayFor(model => model.BatteryPack.TechnologicalName)
             </div>
             <div class="row">
@@ -82,12 +90,12 @@
                 @Html.DisplayFor(model => model.BatteryPack.MonoblockNumber)
             </div>
             <div class="row">
-                @Html.LabelFor(model => model.BatteryPack.Battery.CellQuantity, "Liczba cel akumulatora", htmlAttributes: new { @class = "control-label col-md-5" })
-                @Html.DisplayFor(model => model.BatteryPack.Battery.CellQuantity)
+                @Html.LabelFor(model => model.BatteryPack.Battery.Capacity, "Pojemność", htmlAttributes: new { @class = "control-label col-md-5" })
+                @Html.DisplayFor(model => model.BatteryPack.Battery.Capacity)
             </div>
             <div class="row">
-                @Html.LabelFor(model => model.BatteryPack.Battery.CellQuantity, "Liczba cel akumulatora", htmlAttributes: new { @class = "control-label col-md-5" })
-                @Html.DisplayFor(model => model.BatteryPack.Battery.CellQuantity)
+                @Html.LabelFor(model => model.BatteryPack.LastReviewDate, "Data ostatniego przeglądu", htmlAttributes: new { @class = "control-label col-md-5" })
+                @Html.DisplayFor(model => model.BatteryPack.LastReviewDate)
             </div>
         </div>
         <div class="form-group">

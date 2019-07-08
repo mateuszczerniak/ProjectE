@@ -51,6 +51,9 @@ namespace ProjectE.Models.ViewModels
         public int DeviceTypeId { get; set; }
         public string DeviceType { get; set; }
 
+        public int ManufacturerId { get; set; }
+        public string Manufacturer { get; set; }
+
         public int WorkSheets { get; set; }
     }
 }

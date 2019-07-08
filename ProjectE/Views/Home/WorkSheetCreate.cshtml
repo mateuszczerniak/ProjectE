@@ -35,10 +35,13 @@
                 @Html.DisplayNameFor(model => model.Installation)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ShortcutName)
+                @Html.DisplayNameFor(model => model.DeviceModel)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.DeviceModel)
+                @Html.DisplayNameFor(model => model.Manufacturer)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PrimarySupply)
             </th>
             <th></th>
         </tr>
@@ -48,13 +51,16 @@
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Installation)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ShortcutName)
+                    @Html.DisplayFor(modelItem => item.Installation)-@Html.DisplayFor(modelItem => item.ShortcutName)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.DeviceModel)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Manufacturer)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PrimarySupply)
                 </td>
                 <td>@Html.ActionLink("Dodaj", "AddDevice", new { id = item.DeviceId })</td>
             </tr>

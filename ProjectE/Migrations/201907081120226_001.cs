@@ -92,7 +92,7 @@ namespace ProjectE.Migrations
                         OutputCurrent = c.Single(nullable: false),
                         InputPhaseNumber = c.Int(nullable: false),
                         OutputPhaseNumber = c.Int(nullable: false),
-                        ManufacturerId = c.Int(),
+                        ManufacturerId = c.Int(nullable: false),
                         DeviceTypeId = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.DeviceModelId)

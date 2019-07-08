@@ -41,6 +41,8 @@ namespace ProjectE.Controllers
                 OperatingMode = s.OperatingMode.Name,
                 DeviceModelId = s.DeviceModelId,
                 DeviceModel = s.DeviceModel.Name,
+                ManufacturerId = s.DeviceModel.ManufacturerId,
+                Manufacturer = s.DeviceModel.Manufacturer.Name,
                 WorkSheets = s.WorkSheets.Count(),
             });
             return View(lista);

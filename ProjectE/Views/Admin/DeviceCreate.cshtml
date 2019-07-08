@@ -83,7 +83,6 @@
         @Html.LabelFor(model => model.BatteryPackId, "BatteryPackId", htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @Html.DropDownList("BatteryPackId", (SelectList)ViewBag.BatteryPackId, new { @class = "form-control" })
-            @*@Html.DropDownList("BatteryPackId", null, htmlAttributes: new { @class = "form-control" })*@
             @Html.ValidationMessageFor(model => model.BatteryPackId, "", new { @class = "text-danger" })
         </div>
     </div>
