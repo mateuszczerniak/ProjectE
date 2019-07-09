@@ -150,7 +150,38 @@ namespace ProjectE.Controllers
             ViewBag.OperatingModeId = new SelectList(db.OperatingModes, "OperatingModeId", "Name", workSheet.Device.OperatingModeId);
             return View(workSheet);
         }
+        /////////////////////
+        public ActionResult ReportCreate(int? id)
+        {
+            ViewBag.WorkReasonId = new SelectList(db.WorkReasons, "WorkReasonId", "Name");
+            var worksheet = db.WorkSheets;
+            var workreason = db.WorkReasons.ToList();
+            var model = new ReportVM
+            {
+                workSheet = worksheet,
+                workReason = workreason
+            };
 
+
+
+            WorkSheet workSheetM = new WorkSheet();
+            WorkReason workReasonM = new WorkReason();
+            ReportVM model = new ReportVM();
+            model.workSheet = workSheetM;
+            model.workReason = workReasonM;
+            return View(model);
+            //if (id == null)
+            //{
+            //    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            //}
+            //WorkSheet workSheet = db.WorkSheets.Find(id);
+            //if (workSheet == null)
+            //{
+            //    return HttpNotFound();
+            //}
+            //ViewBag.WorkSheetId = new SelectList(db.WorkSheets, "WorkSheetId", "ShortcutName", workSheet.WorkSheetId);
+            //return View(workSheet);
+        }
 
 
 

@@ -7,6 +7,7 @@ namespace ProjectE.Models
 {
     public class WorkReason
     {
+
         public int WorkReasonId { get; set; }
         public string Name { get; set; }
 

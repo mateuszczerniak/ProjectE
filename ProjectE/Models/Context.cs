@@ -29,6 +29,7 @@ namespace ProjectE.Models
         public DbSet<ToolType> ToolTypes { set; get; }
         public DbSet<WorkReason> WorkReasons { set; get; }
         public DbSet<WorkSheet> WorkSheets { set; get; }
+        public DbSet<Report> Reports { set; get; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

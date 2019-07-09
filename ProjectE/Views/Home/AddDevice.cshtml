@@ -31,10 +31,6 @@
                 @Html.DisplayFor(model => model.ProductionYear)
             </div>
             <div class="row">
-                @Html.LabelFor(model => model.LastReviewDate, "Data ostatniego przeglądu", htmlAttributes: new { @class = "control-label col-md-5" })
-                @Html.DisplayFor(model => model.LastReviewDate)
-            </div>
-            <div class="row">
                 @Html.LabelFor(model => model.OperatingMode.Name, "Tryb pracy", htmlAttributes: new { @class = "control-label col-md-5" })
                 @Html.DisplayFor(model => model.OperatingMode.Name)
             </div>
@@ -53,6 +49,10 @@
             <div class="row">
                 @Html.LabelFor(model => model.SecondarySupply, "Zasilanie rezerwowe", htmlAttributes: new { @class = "control-label col-md-5" })
                 @Html.DisplayFor(model => model.SecondarySupply)
+            </div>
+            <div class="row">
+                @Html.LabelFor(model => model.LastReviewDate, "Data ostatniego przeglądu", htmlAttributes: new { @class = "control-label col-md-5" })
+                @Html.DisplayFor(model => model.LastReviewDate)
             </div>
         </div>
         <div class="col-xs-6" style="border: thin solid black">

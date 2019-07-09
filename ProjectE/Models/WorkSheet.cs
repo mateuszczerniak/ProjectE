@@ -8,10 +8,7 @@ namespace ProjectE.Models
 {
     public class WorkSheet
     {
-        public WorkSheet()
-        {
 
-        }
         public int? WorkSheetId { get; set; }
 
         [ForeignKey("Device")]
