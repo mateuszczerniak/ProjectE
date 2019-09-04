@@ -11,6 +11,6 @@ namespace ProjectE.Models
         public int WorkReasonId { get; set; }
         public string Name { get; set; }
 
-        public virtual ICollection<WorkSheet> WorkSheets { get; set; }
+        public virtual ICollection<Report> Reports { get; set; }
     }
 }

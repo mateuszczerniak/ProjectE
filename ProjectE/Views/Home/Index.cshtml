@@ -50,7 +50,8 @@
                 <td>
                     @Html.ActionLink("Edit", "WorkSheetEdit", new { id = item.WorkSheetId }) |
                     @Html.ActionLink("Details", "WorkSheetDetails", new { id = item.WorkSheetId }) |
-                    @Html.ActionLink("Delete", "WorkSheetDelete", new { id = item.WorkSheetId })
+                    @Html.ActionLink("Delete", "WorkSheetDelete", new { id = item.WorkSheetId }) |
+                    @Html.ActionLink("Report", "ReportCreate", new { id = item.WorkSheetId })
                 </td>
             </tr>
         }

@@ -10,305 +10,308 @@
 {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    @Html.HiddenFor(model => model.workSheet.WorkSheetId)
+    @Html.HiddenFor(model => model.worksheet.WorkSheetId)
     <div class="col-xs-12">
         <h4><u>1. Dane znamionowe testowanego układu.</u></h4>
         <div class="col-xs-12 row">
             <div class="col-xs-6" style="border: thin solid black">
                 <h3>Urządzenie</h3>
                 <div class="row">
-                    @Html.LabelFor(model => model.workSheet.Device.Installation.ShortcutName, "Nazwa urządzenia", htmlAttributes: new { @class = "control-label col-md-5" })
-                    @Html.DisplayFor(model => model.workSheet.Device.Installation.ShortcutName)-@Html.DisplayFor(model => model.workSheet.Device.ShortcutName)
+                    @Html.LabelFor(model => model.worksheet.Device.Installation.ShortcutName, "Nazwa urządzenia", htmlAttributes: new { @class = "control-label col-md-5" })
+                    @Html.DisplayFor(model => model.worksheet.Device.Installation.ShortcutName)-@Html.DisplayFor(model => model.worksheet.Device.ShortcutName)
                 </div>
                 <div class="row">
-                    @Html.LabelFor(model => model.workSheet.Device.DeviceModel.Name, "Model", htmlAttributes: new { @class = "control-label col-md-5" })
-                    @Html.DisplayFor(model => model.workSheet.Device.DeviceModel.Name)
+                    @Html.LabelFor(model => model.worksheet.Device.DeviceModel.Name, "Model", htmlAttributes: new { @class = "control-label col-md-5" })
+                    @Html.DisplayFor(model => model.worksheet.Device.DeviceModel.Name)
                 </div>
                 <div class="row">
-                    @Html.LabelFor(model => model.workSheet.Device.DeviceModel.Manufacturer.Name, "Producent", htmlAttributes: new { @class = "control-label col-md-5" })
-                    @Html.DisplayFor(model => model.workSheet.Device.DeviceModel.Manufacturer.Name)
+                    @Html.LabelFor(model => model.worksheet.Device.DeviceModel.Manufacturer.Name, "Producent", htmlAttributes: new { @class = "control-label col-md-5" })
+                    @Html.DisplayFor(model => model.worksheet.Device.DeviceModel.Manufacturer.Name)
                 </div>
                 <div class="row">
-                    @Html.LabelFor(model => model.workSheet.Device.ProductionYear, "Rok produkcji", htmlAttributes: new { @class = "control-label col-md-5" })
-                    @Html.DisplayFor(model => model.workSheet.Device.ProductionYear)
+                    @Html.LabelFor(model => model.worksheet.Device.ProductionYear, "Rok produkcji", htmlAttributes: new { @class = "control-label col-md-5" })
+                    @Html.DisplayFor(model => model.worksheet.Device.ProductionYear)
                 </div>
                 <div class="row">
-                    @Html.LabelFor(model => model.workSheet.Device.OperatingMode.Name, "Tryb pracy", htmlAttributes: new { @class = "control-label col-md-5" })
-                    @Html.DisplayFor(model => model.workSheet.Device.OperatingMode.Name)
+                    @Html.LabelFor(model => model.worksheet.Device.OperatingMode.Name, "Tryb pracy", htmlAttributes: new { @class = "control-label col-md-5" })
+                    @Html.DisplayFor(model => model.worksheet.Device.OperatingMode.Name)
                 </div>
                 <div class="row">
-                    @Html.LabelFor(model => model.workSheet.Device.Load.Name, "Rodzaj odbioru", htmlAttributes: new { @class = "control-label col-md-5" })
-                    @Html.DisplayFor(model => model.workSheet.Device.Load.Name)
+                    @Html.LabelFor(model => model.worksheet.Device.Load.Name, "Rodzaj odbioru", htmlAttributes: new { @class = "control-label col-md-5" })
+                    @Html.DisplayFor(model => model.worksheet.Device.Load.Name)
                 </div>
                 <div class="row">
-                    @Html.LabelFor(model => model.workSheet.Device.SerialNumber, "Numer seryjny", htmlAttributes: new { @class = "control-label col-md-5" })
-                    @Html.DisplayFor(model => model.workSheet.Device.SerialNumber)
+                    @Html.LabelFor(model => model.worksheet.Device.SerialNumber, "Numer seryjny", htmlAttributes: new { @class = "control-label col-md-5" })
+                    @Html.DisplayFor(model => model.worksheet.Device.SerialNumber)
                 </div>
                 <div class="row">
-                    @Html.LabelFor(model => model.workSheet.Device.PrimarySupply, "Zasilanie podstawowe", htmlAttributes: new { @class = "control-label col-md-5" })
-                    @Html.DisplayFor(model => model.workSheet.Device.PrimarySupply)
+                    @Html.LabelFor(model => model.worksheet.Device.PrimarySupply, "Zasilanie podstawowe", htmlAttributes: new { @class = "control-label col-md-5" })
+                    @Html.DisplayFor(model => model.worksheet.Device.PrimarySupply)
                 </div>
                 <div class="row">
-                    @Html.LabelFor(model => model.workSheet.Device.SecondarySupply, "Zasilanie rezerwowe", htmlAttributes: new { @class = "control-label col-md-5" })
-                    @Html.DisplayFor(model => model.workSheet.Device.SecondarySupply)
+                    @Html.LabelFor(model => model.worksheet.Device.SecondarySupply, "Zasilanie rezerwowe", htmlAttributes: new { @class = "control-label col-md-5" })
+                    @Html.DisplayFor(model => model.worksheet.Device.SecondarySupply)
                 </div>
                 <div class="row">
-                    @Html.LabelFor(model => model.workSheet.Device.LastReviewDate, "Data ostatniego przeglądu", htmlAttributes: new { @class = "control-label col-md-5" })
-                    @Html.DisplayFor(model => model.workSheet.Device.LastReviewDate)
+                    @Html.LabelFor(model => model.worksheet.Device.LastReviewDate, "Data ostatniego przeglądu", htmlAttributes: new { @class = "control-label col-md-5" })
+                    @Html.DisplayFor(model => model.worksheet.Device.LastReviewDate)
                 </div>
             </div>
             <div class="col-xs-6" style="border: thin solid black">
                 <h3>Bateria</h3>
                 <div class="row">
-                    @Html.LabelFor(model => model.workSheet.Device.Installation.ShortcutName, "Nazwa baterii", htmlAttributes: new { @class = "control-label col-md-5" })
-                    @Html.DisplayFor(model => model.workSheet.Device.Installation.ShortcutName)-@Html.DisplayFor(model => model.workSheet.Device.BatteryPack.ShortcutName)
+                    @Html.LabelFor(model => model.worksheet.Device.Installation.ShortcutName, "Nazwa baterii", htmlAttributes: new { @class = "control-label col-md-5" })
+                    @Html.DisplayFor(model => model.worksheet.Device.Installation.ShortcutName)-@Html.DisplayFor(model => model.worksheet.Device.BatteryPack.ShortcutName)
                 </div>
                 <div class="row">
-                    @Html.LabelFor(model => model.workSheet.Device.BatteryPack.TechnologicalName, "Nazwa technologiczna", htmlAttributes: new { @class = "control-label col-md-5" })
-                    @Html.DisplayFor(model => model.workSheet.Device.BatteryPack.TechnologicalName)
+                    @Html.LabelFor(model => model.worksheet.Device.BatteryPack.TechnologicalName, "Nazwa technologiczna", htmlAttributes: new { @class = "control-label col-md-5" })
+                    @Html.DisplayFor(model => model.worksheet.Device.BatteryPack.TechnologicalName)
                 </div>
                 <div class="row">
-                    @Html.LabelFor(model => model.workSheet.Device.BatteryPack.Battery.BatterySpecies.Species, "Typ akumulatora", htmlAttributes: new { @class = "control-label col-md-5" })
-                    @Html.DisplayFor(model => model.workSheet.Device.BatteryPack.Battery.BatterySpecies.Species)
+                    @Html.LabelFor(model => model.worksheet.Device.BatteryPack.Battery.BatterySpecies.Species, "Typ akumulatora", htmlAttributes: new { @class = "control-label col-md-5" })
+                    @Html.DisplayFor(model => model.worksheet.Device.BatteryPack.Battery.BatterySpecies.Species)
                 </div>
                 <div class="row">
-                    @Html.LabelFor(model => model.workSheet.Device.BatteryPack.Battery.BatteryType, "Model akumulatora", htmlAttributes: new { @class = "control-label col-md-5" })
-                    @Html.DisplayFor(model => model.workSheet.Device.BatteryPack.Battery.BatteryType)
+                    @Html.LabelFor(model => model.worksheet.Device.BatteryPack.Battery.BatteryType, "Model akumulatora", htmlAttributes: new { @class = "control-label col-md-5" })
+                    @Html.DisplayFor(model => model.worksheet.Device.BatteryPack.Battery.BatteryType)
                 </div>
                 <div class="row">
-                    @Html.LabelFor(model => model.workSheet.Device.BatteryPack.StringNumber, "Liczba stringów", htmlAttributes: new { @class = "control-label col-md-5" })
-                    @Html.DisplayFor(model => model.workSheet.Device.BatteryPack.StringNumber)
+                    @Html.LabelFor(model => model.worksheet.Device.BatteryPack.StringNumber, "Liczba stringów", htmlAttributes: new { @class = "control-label col-md-5" })
+                    @Html.DisplayFor(model => model.worksheet.Device.BatteryPack.StringNumber)
                 </div>
                 <div class="row">
-                    @Html.LabelFor(model => model.workSheet.Device.BatteryPack.Battery.Capacity, "Pojemność akumulatora", htmlAttributes: new { @class = "control-label col-md-5" })
-                    @Html.DisplayFor(model => model.workSheet.Device.BatteryPack.Battery.Capacity)
+                    @Html.LabelFor(model => model.worksheet.Device.BatteryPack.Battery.Capacity, "Pojemność akumulatora", htmlAttributes: new { @class = "control-label col-md-5" })
+                    @Html.DisplayFor(model => model.worksheet.Device.BatteryPack.Battery.Capacity)
                 </div>
                 <div class="row">
-                    @Html.LabelFor(model => model.workSheet.Device.BatteryPack.Battery.CellQuantity, "Liczba cel akumulatora", htmlAttributes: new { @class = "control-label col-md-5" })
-                    @Html.DisplayFor(model => model.workSheet.Device.BatteryPack.Battery.CellQuantity)
+                    @Html.LabelFor(model => model.worksheet.Device.BatteryPack.Battery.CellQuantity, "Liczba cel akumulatora", htmlAttributes: new { @class = "control-label col-md-5" })
+                    @Html.DisplayFor(model => model.worksheet.Device.BatteryPack.Battery.CellQuantity)
                 </div>
                 <div class="row">
-                    @Html.LabelFor(model => model.workSheet.Device.BatteryPack.Battery.CellQuantity, "Liczba monobloków", htmlAttributes: new { @class = "control-label col-md-5" })
-                    @Html.DisplayFor(model => model.workSheet.Device.BatteryPack.MonoblockNumber)
+                    @Html.LabelFor(model => model.worksheet.Device.BatteryPack.Battery.CellQuantity, "Liczba monobloków", htmlAttributes: new { @class = "control-label col-md-5" })
+                    @Html.DisplayFor(model => model.worksheet.Device.BatteryPack.MonoblockNumber)
                 </div>
                 <div class="row">
-                    @Html.LabelFor(model => model.workSheet.Device.BatteryPack.Battery.Capacity, "Pojemność", htmlAttributes: new { @class = "control-label col-md-5" })
-                    @Html.DisplayFor(model => model.workSheet.Device.BatteryPack.Battery.Capacity)
+                    @Html.LabelFor(model => model.worksheet.Device.BatteryPack.Battery.Capacity, "Pojemność", htmlAttributes: new { @class = "control-label col-md-5" })
+                    @Html.DisplayFor(model => model.worksheet.Device.BatteryPack.Battery.Capacity)
                 </div>
                 <div class="row">
-                    @Html.LabelFor(model => model.workSheet.Device.BatteryPack.LastReviewDate, "Data ostatniego przeglądu", htmlAttributes: new { @class = "control-label col-md-5" })
-                    @Html.DisplayFor(model => model.workSheet.Device.BatteryPack.LastReviewDate)
+                    @Html.LabelFor(model => model.worksheet.Device.BatteryPack.LastReviewDate, "Data ostatniego przeglądu", htmlAttributes: new { @class = "control-label col-md-5" })
+                    @Html.DisplayFor(model => model.worksheet.Device.BatteryPack.LastReviewDate)
                 </div>
             </div>
         </div>
     </div>
     <div class="col-xs-12">
         <h4><u>2. Powód pracy.</u></h4>
-        <div class="row">
-            @Html.LabelFor(model => model.workSheet.Device.BatteryPack.LastReviewDate, "Data ostatniego przeglądu", htmlAttributes: new { @class = "control-label col-md-5" })
-            @Html.DisplayFor(model => model.workSheet.Device.BatteryPack.LastReviewDate)
+        <div class="col-xs-12 row">
+            <div class="col-xs-12" align="center">
+                <div class="row">
+                    @Html.DropDownListFor(m => m.workreason, Model.workreason, new { @class = "form-control" })
+                </div>
+            </div>
         </div>
     </div>
 }
 
 
 
-@*@using (Html.BeginForm())
-    {
-        @Html.AntiForgeryToken()
+        @*@using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
 
-        <div class="form-horizontal">
-            <h4>ReportVM</h4>
-            <hr />
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            <div class="form-group">
-                @Html.LabelFor(model => model.DeviceId, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.DeviceId, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.DeviceId, "", new { @class = "text-danger" })
+            <div class="form-horizontal">
+                <h4>ReportVM</h4>
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.worksheet.DeviceId, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.worksheet.DeviceId, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.worksheet.DeviceId, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.worksheet.Device.ShortcutName, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.worksheet.Device.ShortcutName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.worksheet.Device.ShortcutName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.worksheet.Device.SerialNumber, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.worksheet.Device.SerialNumber, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.worksheet.Device.SerialNumber, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.worksheet.Device.PrimarySupply, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.worksheet.Device.PrimarySupply, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.worksheet.Device.PrimarySupply, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.worksheet.Device.SecondarySupply, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.worksheet.Device.SecondarySupply, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.worksheet.Device.SecondarySupply, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.worksheet.Device.ProductionYear, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.worksheet.Device.ProductionYear, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.worksheet.Device.ProductionYear, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.worksheet.Device.AssemblyDate, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.worksheet.Device.AssemblyDate, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.worksheet.Device.AssemblyDate, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.worksheet.Device.LastReviewDate, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.worksheet.Device.LastReviewDate, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.worksheet.Device.LastReviewDate, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.worksheet.Device.InstallationId, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.worksheet.Device.InstallationId, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.worksheet.Device.InstallationId, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.worksheet.Device.Installation, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.worksheet.Device.Installation, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.worksheet.Device.Installation, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.worksheet.Device.BatteryPackId, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.worksheet.Device.BatteryPackId, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.worksheet.Device.BatteryPackId, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.worksheet.Device.BatteryPack, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.worksheet.Device.BatteryPack, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.worksheet.Device.BatteryPack, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.worksheet.Device.LoadId, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.worksheet.Device.LoadId, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.worksheet.Device.LoadId, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.worksheet.Device.Load, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.worksheet.Device.Load, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.worksheet.Device.Load, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.worksheet.Device.OperatingModeId, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.worksheet.Device.OperatingModeId, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.worksheet.Device.OperatingModeId, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.worksheet.Device.OperatingMode, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.worksheet.Device.OperatingMode, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.worksheet.Device.OperatingMode, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.worksheet.Device.DeviceModelId, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.worksheet.Device.DeviceModelId, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.worksheet.Device.DeviceModelId, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.worksheet.Device.DeviceModel, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.worksheet.Device.DeviceModel, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.worksheet.Device.DeviceModel, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.worksheet.Device.DeviceModel.DeviceTypeId, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.worksheet.Device.DeviceModel.DeviceTypeId, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.worksheet.Device.DeviceModel.DeviceTypeId, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.worksheet.Device.DeviceModel.DeviceType, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.worksheet.Device.DeviceModel.DeviceType, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.worksheet.Device.DeviceModel.DeviceType, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.worksheet.Device.DeviceModel.ManufacturerId, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.worksheet.Device.DeviceModel.ManufacturerId, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.worksheet.Device.DeviceModel.ManufacturerId, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.worksheet.Device.DeviceModel.Manufacturer, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.worksheet.Device.DeviceModel.Manufacturer, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.worksheet.Device.DeviceModel.Manufacturer, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Create" class="btn btn-default" />
+                    </div>
                 </div>
             </div>
+        }*@
 
-            <div class="form-group">
-                @Html.LabelFor(model => model.ShortcutName, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.ShortcutName, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.ShortcutName, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.SerialNumber, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.SerialNumber, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.SerialNumber, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.PrimarySupply, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.PrimarySupply, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.PrimarySupply, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.SecondarySupply, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.SecondarySupply, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.SecondarySupply, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.ProductionYear, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.ProductionYear, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.ProductionYear, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.AssemblyDate, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.AssemblyDate, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.AssemblyDate, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.LastReviewDate, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.LastReviewDate, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.LastReviewDate, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.InstallationId, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.InstallationId, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.InstallationId, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.Installation, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Installation, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Installation, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.BatteryPackId, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.BatteryPackId, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.BatteryPackId, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.BatteryPack, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.BatteryPack, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.BatteryPack, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.LoadId, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.LoadId, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.LoadId, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.Load, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Load, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Load, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.OperatingModeId, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.OperatingModeId, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.OperatingModeId, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.OperatingMode, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.OperatingMode, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.OperatingMode, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.DeviceModelId, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.DeviceModelId, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.DeviceModelId, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.DeviceModel, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.DeviceModel, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.DeviceModel, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.DeviceTypeId, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.DeviceTypeId, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.DeviceTypeId, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.DeviceType, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.DeviceType, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.DeviceType, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.ManufacturerId, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.ManufacturerId, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.ManufacturerId, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.Manufacturer, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Manufacturer, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Manufacturer, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Create" class="btn btn-default" />
-                </div>
-            </div>
+        <div>
+            @Html.ActionLink("Back to List", "Index")
         </div>
-    }*@
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+        @section Scripts {
+            @Scripts.Render("~/bundles/jqueryval")
+        }

@@ -153,39 +153,39 @@ namespace ProjectE.Controllers
         /////////////////////
         public ActionResult ReportCreate(int? id)
         {
-            ViewBag.WorkReasonId = new SelectList(db.WorkReasons, "WorkReasonId", "Name");
-            var worksheet = db.WorkSheets;
-            var workreason = db.WorkReasons.ToList();
-            var model = new ReportVM
+            var context = new Models.Context();
+
+            var workSheets = context.WorkSheets.FirstOrDefault(ps => ps.WorkSheetId == id);
+            var workReasons = context.WorkReasons.Select(w =>
+                new SelectListItem()
+                {
+                    Text = w.Name,
+                    Value = w.WorkReasonId.ToString()
+                }
+            ).ToList();
+            var reportVM = new ReportVM
             {
-                workSheet = worksheet,
-                workReason = workreason
+                workreason = workReasons,
+                worksheet = workSheets
             };
-
-
-
-            WorkSheet workSheetM = new WorkSheet();
-            WorkReason workReasonM = new WorkReason();
-            ReportVM model = new ReportVM();
-            model.workSheet = workSheetM;
-            model.workReason = workReasonM;
-            return View(model);
-            //if (id == null)
-            //{
-            //    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            //}
-            //WorkSheet workSheet = db.WorkSheets.Find(id);
-            //if (workSheet == null)
-            //{
-            //    return HttpNotFound();
-            //}
-            //ViewBag.WorkSheetId = new SelectList(db.WorkSheets, "WorkSheetId", "ShortcutName", workSheet.WorkSheetId);
-            //return View(workSheet);
+            return View(reportVM);
         }
+        
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult ReportCreate([Bind(Include = "WorkReasonId,Name,WorkSheetId")] Report report)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        db.Reports.Add(report);
+        //        db.SaveChanges();
+        //        return RedirectToAction("Index");
+        //    }
 
-
-
-
+        //    ViewBag.WorkReasonId = new SelectList(db.WorkReasons, "WorkReasonId", "Name", report.WorkReasonId);
+        //    ViewBag.WorkSheetId = new SelectList(db.WorkSheets, "WorkSheetId", "Name", report.WorkSheetId);
+        //    return View(report);
+        //}
 
         protected override void Dispose(bool disposing)
         {
