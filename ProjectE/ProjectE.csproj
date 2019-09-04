@@ -171,6 +171,7 @@
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\filterTable\jquery.filtertable.js" />
     <Content Include="Scripts\filterTable\jquery.filtertable.min.js" />
+    <Content Include="Scripts\findNumber.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.js" />
