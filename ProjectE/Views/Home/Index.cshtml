@@ -3,15 +3,18 @@
 @{
     ViewBag.Title = "Index";
 }
-
 <div class="jumbotron">
     <div class="row">
-        <div class="col-xs-6">
+        <div class="col-xs-12">
+            @*<img src="~/Content/images/ORLENSerwis.jpg" class="img-fluid" alt="Responsive image">*@
             <img src="~/Content/images/ORLENSerwis.jpg" width="50%" height="50%" />
         </div>
-        <div class="col-xs-6">
+        @*<div class="col-xs-6">
             <h1>Project E</h1>
-        </div>
+        </div>*@
+    </div>
+    <div class="col-xs-6">
+        <h1>Project E</h1>
     </div>
 </div>
 
@@ -22,38 +25,38 @@
 </p>
 
 <table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Device.Installation.ShortcutName)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.Device.ShortcutName)
+        </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.Device.DeviceModel.Name)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Device.Installation.ShortcutName)
-            </th>
-            @*<th>
-                @Html.DisplayNameFor(model => model.Device.ShortcutName)
-            </th>*@
-            <th>
-                @Html.DisplayNameFor(model => model.Device.DeviceModel.Name)
-            </th>
-            <th></th>
+            <td>
+                @Html.DisplayFor(modelItem => item.Device.Installation.ShortcutName)-@Html.DisplayFor(modelItem => item.Device.ShortcutName)
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.Device.ShortcutName)
+            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.Device.DeviceModel.Name)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "WorkSheetEdit", new { id = item.WorkSheetId }) |
+                @Html.ActionLink("Details", "WorkSheetDetails", new { id = item.WorkSheetId }) |
+                @Html.ActionLink("Delete", "WorkSheetDelete", new { id = item.WorkSheetId }) |
+                @Html.ActionLink("Report", "ReportCreate", new { id = item.WorkSheetId })
+            </td>
         </tr>
+    }
 
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Device.Installation.ShortcutName)-@Html.DisplayFor(modelItem => item.Device.ShortcutName)
-                </td>
-                @*<td>
-                    @Html.DisplayFor(modelItem => item.Device.ShortcutName)
-                </td>*@
-                <td>
-                    @Html.DisplayFor(modelItem => item.Device.DeviceModel.Name)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "WorkSheetEdit", new { id = item.WorkSheetId }) |
-                    @Html.ActionLink("Details", "WorkSheetDetails", new { id = item.WorkSheetId }) |
-                    @Html.ActionLink("Delete", "WorkSheetDelete", new { id = item.WorkSheetId }) |
-                    @Html.ActionLink("Report", "ReportCreate", new { id = item.WorkSheetId })
-                </td>
-            </tr>
-        }
-
-    </table>
+</table>

@@ -170,6 +170,21 @@ namespace ProjectE.Controllers
             };
             return View(reportVM);
         }
+
+        public ActionResult Report(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            WorkSheet workSheet = db.WorkSheets.Find(id);
+            if (workSheet == null)
+            {
+                return HttpNotFound();
+            }
+            Report report = db.Reports.FirstOrDefault();
+            return View(report);
+        }
         
         //[HttpPost]
         //[ValidateAntiForgeryToken]

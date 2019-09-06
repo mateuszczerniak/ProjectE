@@ -116,16 +116,16 @@
         <h4><u>2. Test pojemności baterii akumulatorów.</u></h4>
         <div class="col-xs-12 row">
             <div class="col-xs-12">
-                Zmierzone napięcie buforowe Ub = <input />
+                Zmierzone napięcie buforowe Ub = <input />V
                 <table border="1">
                     <tr align="center">
                         <th align="center">Godzina/Monoblok</th>
-                        <th align="center"><input type="time" value="09:15" max="24:00"/></th>
-                        <th align="center"><input type="time" value="10:00" max="24:00"/></th>
-                        <th align="center"><input type="time" value="11:00" max="24:00"/></th>
-                        <th align="center"><input type="time" value="12:00" max="24:00"/></th>
+                        <th align="center" text-align:center><input type="time" value="09:15" max="24:00" /></th>
+                        <th align="center" text-align:center><input type="time" value="10:00" max="24:00" /></th>
+                        <th align="center" text-align:center><input type="time" value="11:00" max="24:00" /></th>
+                        <th align="center" text-align:center><input type="time" value="12:00" max="24:00" /></th>
                     </tr>
-                    @{ 
+                    @{
                         var numberMonoblocks = Html.DisplayFor(model => model.worksheet.Device.BatteryPack.MonoblockNumber).ToString();
                         var myvalue = Int32.Parse(numberMonoblocks);
                     }
@@ -133,7 +133,7 @@
                     {
                         <tr align="center">
                             <td align="center">@i</td>
-                            <td align="center"><input type="number" step=".01" min="0"/></td>
+                            <td align="center"><input type="number" step=".01" min="0" /></td>
                             <td align="center"><input type="number" step=".01" min="0" /></td>
                             <td align="center"><input type="number" step=".01" min="0" /></td>
                             <td align="center"><input type="number" step=".01" min="0" /></td>

@@ -13,7 +13,7 @@ namespace ProjectE.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201909040717515_001"; }
+            get { return "201909061200245_001"; }
         }
         
         string IMigrationMetadata.Source
