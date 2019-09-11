@@ -173,17 +173,88 @@ namespace ProjectE.Controllers
 
         public ActionResult Report(int? id)
         {
+            var context = new Models.Context();
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            WorkSheet workSheet = db.WorkSheets.Find(id);
-            if (workSheet == null)
+            var workSheets = context.WorkSheets.FirstOrDefault(ps => ps.WorkSheetId == id);
+            if (workSheets == null)
             {
                 return HttpNotFound();
             }
-            Report report = db.Reports.FirstOrDefault();
-            return View(report);
+            var workReasons = context.WorkReasons.Select(w =>
+                new SelectListItem()
+                {
+                    Text = w.Name,
+                    Value = w.WorkReasonId.ToString()
+                }
+                ).ToList();
+            var report = new Report();
+            var device = db.Devices.FirstOrDefault();
+            var reportViewModel = new ReportViewModel
+            {
+                WorkSheetId = workSheets.WorkSheetId,
+                ShortcutName = workSheets.Device.ShortcutName,
+                Installation = workSheets.Device.Installation.ShortcutName,
+                WorkReason = workReasons,
+                Device = device,
+                StartStop = false,
+                RegisterEntries = false,
+                PrimarySupplyOff = false,
+                PrimarySupplyBack = false,
+                BypassSwitch = false,
+                ShortCircuitTest = false,
+                RapidLoadChanges = false,
+                SignallingCheck = false,
+                WorkCorrect = false,
+                HousingCondition = false,
+                WiringCondition = false,
+                DisplayCondition = false,
+                Cleaning = false,
+                WorkTimeDay = DateTime.Now,
+                WorkTimeFrom = DateTime.Now,
+                WorkTimeTo = DateTime.Now,
+                Comment = report.Comment,
+                Damage = report.Damage,
+                ReplacedPart = report.ReplacedPart,
+                FinalResult = report.FinalResult,
+                Load = 0,
+                OutputVoltage = 230,
+                BufferVoltage = 230,
+                BatteryTemperature = 20,
+                DensityBefore = 1.24,
+                DensityAfter = 1.16,
+                WaterAmount = 0,
+                BatteryHousing = false,
+                BatteryJumper = false,
+                BatteryCleaning = false,
+                Measurement = null,
+                BatteryTest = DateTime.Now,
+                BatteryStart = DateTime.Now,
+                BatteryEnd = DateTime.Now,
+                LastFunctionalTest = device.LastFunctionalTest,
+                LastReviewDate = device.LastReviewDate
+            };
+            return View(reportViewModel);
+
+            //var context = new Models.Context();
+            //if (id == null)
+            //{
+            //    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            //}
+            //var workSheets = context.WorkSheets.FirstOrDefault(ps => ps.WorkSheetId == id);
+            //if (workSheets == null)
+            //{
+            //    return HttpNotFound();
+            //}
+            //var workReasons = new WorkReason();
+            //var report = new Report
+            //{
+            //    WorkSheet = workSheets,
+            //    WorkReason = workReasons
+            //};
+            //return View(report);
         }
         
         //[HttpPost]

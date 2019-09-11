@@ -28,6 +28,10 @@ namespace ProjectE.Models
         [DisplayFormat(DataFormatString = "{0:dd.MM.yyyy}", ApplyFormatInEditMode = true)]
         public System.DateTime LastReviewDate { get; set; }
 
+        [DataType(DataType.Date, ErrorMessage = "Niepoprawny format daty")]
+        [DisplayFormat(DataFormatString = "{0:dd.MM.yyyy}", ApplyFormatInEditMode = true)]
+        public System.DateTime LastFunctionalTest { get; set; }
+
 
         [ForeignKey("Installation")]
         public int InstallationId { get; set; }
