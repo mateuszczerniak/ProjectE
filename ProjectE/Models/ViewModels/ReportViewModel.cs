@@ -9,10 +9,11 @@ namespace ProjectE.Models.ViewModels
 {
     public class ReportViewModel
     {
-        public int? WorkSheetId { get; set; }
+        public int WorkSheetId { get; set; }
         public string ShortcutName { get; set; }
         public string Installation { get; set; }
         public List<SelectListItem> WorkReason { get; set; }
+        public int WorkReasonId { get; set; }
         public bool StartStop { get; set; }
         public bool RegisterEntries { get; set; }
         public bool PrimarySupplyOff { get; set; }
@@ -44,8 +45,12 @@ namespace ProjectE.Models.ViewModels
         public string ReplacedPart { get; set; }
         public string FinalResult { get; set; }
         public int Load { get; set; }
-        public decimal OutputVoltage { get; set; }
-        public decimal BufferVoltage { get; set; }
+        public double OutputVoltage { get; set; }
+        public double PowerFactor { get; set; }
+        public double InputCurrentTHD { get; set; }
+        public double OutputVoltageTHD { get; set; }
+        public int Frequency { get; set; }
+        public double BufferVoltage { get; set; }
         public int BatteryTemperature { get; set; }
         public double DensityBefore { get; set; }
         public double DensityAfter { get; set; }
@@ -75,5 +80,7 @@ namespace ProjectE.Models.ViewModels
         [DisplayFormat(DataFormatString = "{0:dd.MM.yyyy}", ApplyFormatInEditMode = true)]
         public System.DateTime LastReviewDate { get; set; }
         public Device Device { get;set; }
+        public int ToolId { get; set; }
+        public List<SelectListItem> Tool { get; set; }
     }
 }

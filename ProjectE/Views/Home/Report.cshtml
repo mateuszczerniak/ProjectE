@@ -23,115 +23,315 @@
         <div id="deviceMenu" class="tab-pane fade in active">
             <p>
                 <div class="col-xs-12">
-                    @Html.LabelFor(model => model.Installation, "Nazwa urządzenia", htmlAttributes: new { @class = "control-label col-md-5" })
+                    @Html.LabelFor(model => model.Installation, "Nazwa urządzenia", htmlAttributes: new { @class = "control-label col-xs-2" })
                     @Html.DisplayFor(model => model.Installation)-@Html.DisplayFor(model => model.ShortcutName)
                 </div>
                 <div class="col-xs-12">
-                    @Html.LabelFor(model => model.WorkReason, "Powód pracy", htmlAttributes: new { @class = "control-label col-md-5" })
-                    @Html.DropDownListFor(m => m.WorkReason, Model.WorkReason, new { @class = "form-control" })
+                    @Html.LabelFor(model => model.WorkReason, "Powód pracy", htmlAttributes: new { @class = "control-label col-xs-2" })
+                    @Html.DropDownListFor(m => m.WorkReasonId, Model.WorkReason, new { @class = "form-control" })
                 </div>
-                <div class="col-xs-6" >
+                <div class="col-xs-12">
                     <h4>Próby funkcjonalne</h4>
-                    <div align="right">
-                        Sprawdzić procedury startu i zatrzymania UPS @Html.CheckBoxFor(m=>m.StartStop, new { htmlAttributes = new { @class = "form-control pull-right" } })
+                    <div class="col-xs-12 row">
+                        <div class="col-xs-6">
+                            @Html.LabelFor(model => model.StartStop, "Sprawdzić procedury startu i zatrzymania UPS", htmlAttributes: new { @class = "control-label" })
+                        </div>
+                        <div class="col-xs-6" style="position: relative; left: 1px;">
+                            @Html.CheckBoxFor(m => m.StartStop, new { htmlAttributes = new { @class = "form-control", @style = "left: 100px;" } })
+                        </div>
                     </div>
-                    <div align="right">
-                        Sprawdzić obecność odpowiednich zapisów w rejestrze @Html.CheckBoxFor(m=>m.RegisterEntries)
+                    <div class="col-xs-12 row">
+                        <div class="col-xs-6">
+                            @Html.LabelFor(model => model.RegisterEntries, "Sprawdzić obecność odpowiednich zapisów w rejestrze", htmlAttributes: new { @class = "control-label" })
+                        </div>
+                        <div class="col-xs-6" style="position: relative; left: 1px;">
+                            @Html.CheckBoxFor(m => m.RegisterEntries, new { htmlAttributes = new { @class = "form-control", @style = "left: 100px;" } })
+                        </div>
                     </div>
-                    <div align="right">
-                        Zanik podstawowego zasilania lub wyłączenie prostownika @Html.CheckBoxFor(m=>m.PrimarySupplyOff)
+                    <div class="col-xs-12 row">
+                        <div class="col-xs-6">
+                            @Html.LabelFor(model => model.PrimarySupplyOff, "Zanik podstawowego zasilania lub wyłączenie prostownika", htmlAttributes: new { @class = "control-label" })
+                        </div>
+                        <div class="col-xs-6" style="position: relative; left: 1px;">
+                            @Html.CheckBoxFor(m => m.PrimarySupplyOff, new { htmlAttributes = new { @class = "form-control", @style = "left: 100px;" } })
+                        </div>
                     </div>
-                    <div align="right">
-                        Powrót zasilania podstawowego @Html.CheckBoxFor(m=>m.PrimarySupplyBack)
+                    <div class="col-xs-12 row">
+                        <div class="col-xs-6">
+                            @Html.LabelFor(model => model.PrimarySupplyBack, "Powrót zasilania podstawowego", htmlAttributes: new { @class = "control-label" })
+                        </div>
+                        <div class="col-xs-6" style="position: relative; left: 1px;">
+                            @Html.CheckBoxFor(m => m.PrimarySupplyBack, new { htmlAttributes = new { @class = "form-control", @style = "left: 100px;" } })
+                        </div>
                     </div>
-                    <div align="right">
-                        Przejście na bypass @Html.CheckBoxFor(m=>m.BypassSwitch)
+                    <div class="col-xs-12 row">
+                        <div class="col-xs-6">
+                            @Html.LabelFor(model => model.BypassSwitch, "Przejście na bypass", htmlAttributes: new { @class = "control-label" })
+                        </div>
+                        <div class="col-xs-6" style="position: relative; left: 1px;">
+                            @Html.CheckBoxFor(m => m.BypassSwitch, new { htmlAttributes = new { @class = "form-control", @style = "left: 100px;" } })
+                        </div>
                     </div>
-                    <div align="right">
-                        Próby zwarciowe @Html.CheckBoxFor(m=>m.ShortCircuitTest)
+                    <div class="col-xs-12 row">
+                        <div class="col-xs-6">
+                            @Html.LabelFor(model => model.ShortCircuitTest, "Próby zwarciowe", htmlAttributes: new { @class = "control-label" })
+                        </div>
+                        <div class="col-xs-6" style="position: relative; left: 1px;">
+                            @Html.CheckBoxFor(m => m.ShortCircuitTest, new { htmlAttributes = new { @class = "form-control", @style = "left: 100px;" } })
+                        </div>
                     </div>
-                    <div align="right">
-                        Gwałtowne zmiany obciążenia @Html.CheckBoxFor(m=>m.RapidLoadChanges)
+                    <div class="col-xs-12 row">
+                        <div class="col-xs-6">
+                            @Html.LabelFor(model => model.RapidLoadChanges, "Gwałtowne zmiany obciążenia", htmlAttributes: new { @class = "control-label" })
+                        </div>
+                        <div class="col-xs-6" style="position: relative; left: 1px;">
+                            @Html.CheckBoxFor(m => m.RapidLoadChanges, new { htmlAttributes = new { @class = "form-control", @style = "left: 100px;" } })
+                        </div>
                     </div>
-                    <div align="right">
-                        Sprawdzenie sygnalizacji do systemów nadrzędnych @Html.CheckBoxFor(m=>m.SignallingCheck)
+                    <div class="col-xs-12 row">
+                        <div class="col-xs-6">
+                            @Html.LabelFor(model => model.SignallingCheck, "Sprawdzenie sygnalizacji do systemów nadrzędnych", htmlAttributes: new { @class = "control-label" })
+                        </div>
+                        <div class="col-xs-6" style="position: relative; left: 1px;">
+                            @Html.CheckBoxFor(m => m.SignallingCheck, new { htmlAttributes = new { @class = "form-control", @style = "left: 100px;" } })
+                        </div>
                     </div>
-                    <div align="right">
-                        Czy układ działa poprawnie @Html.CheckBoxFor(m=>m.WorkCorrect)
+                    <div class="col-xs-12 row">
+                        <div class="col-xs-6">
+                            @Html.LabelFor(model => model.WorkCorrect, "Czy układ działa poprawnie", htmlAttributes: new { @class = "control-label" })
+                        </div>
+                        <div class="col-xs-6" style="position: relative; left: 1px;">
+                            @Html.CheckBoxFor(m => m.WorkCorrect, new { htmlAttributes = new { @class = "form-control", @style = "left: 100px;" } })
+                        </div>
                     </div>
                 </div>
                 <div class="col-xs-12">
-                    <h4>Godziny pracy</h4>
-                    @Html.TextBoxFor(model => model.WorkTimeDay,new { @type = "date", @Value = Model.WorkTimeDay.ToString("yyyy-MM-dd") }) Od @Html.TextBoxFor(model => model.WorkTimeFrom, new { @type = "time", @Value = Model.WorkTimeDay.ToString("08:30") }) Do @Html.TextBoxFor(model => model.WorkTimeTo, new { @type = "time", @Value = Model.WorkTimeDay.ToString("13:30") })
-                </div>
-                <div class="col-xs-6" align="right">
-                    <div>
-                        Uwagi @Html.TextBoxFor(m => m.Comment,new { @size="100"})
+                    <h4>Narzędzia</h4>
+                    <div align="left">
+                        @Html.LabelFor(model => model.Tool, "1", htmlAttributes: new { @class = "control-label col-xs-1" }) @Html.DropDownListFor(m => m.ToolId, Model.Tool, "", new { @class = "form-control" })
                     </div>
-                    <div>
-                        Uszkodzenia @Html.TextBoxFor(m=>m.Damage,new { @size="100"})
+                    <div align="left">
+                        @Html.LabelFor(model => model.Tool, "2", htmlAttributes: new { @class = "control-label col-xs-1" }) @Html.DropDownListFor(m => m.ToolId, Model.Tool, "", new { @class = "form-control" })
                     </div>
-                    <div>
-                        Wymienione części @Html.TextBoxFor(m=>m.ReplacedPart,new { @size="100"})
+                    @*<div align="left">
+                        @Html.LabelFor(model => model.Tool, "3", htmlAttributes: new { @class = "control-label col-xs-1" }) @Html.DropDownListFor(m => m.Tool, Model.Tool, "", new { @class = "form-control" })
                     </div>
-                    <div>
-                        <b>Wynik końcowy</b> @Html.TextBoxFor(m=>m.FinalResult,new { @size="100"})
-                    </div>
-                </div>
-                <div class="col-xs-12">
-                    <div>
-                        Przegląd urządzenia @Html.TextBoxFor(m => m.LastReviewDate, new { @type = "date", @Value = Model.LastReviewDate.ToString("yyyy-MM-dd") })
-                    </div>
-                    <div>
-                        Próby funkcjonalne @Html.TextBoxFor(m => m.LastFunctionalTest, new { @type = "date", @Value = Model.LastFunctionalTest.ToString("yyyy-MM-dd") })
-                    </div>
+                    <div align="left">
+                        @Html.LabelFor(model => model.Tool, "4", htmlAttributes: new { @class = "control-label col-xs-1" }) @Html.DropDownListFor(m => m.Tool, Model.Tool, "", new { @class = "form-control" })
+                    </div>*@
                 </div>
                 <div class="col-xs-12">
                     <h4>Parametry elektryczne</h4>
-                    Obciążenie @Html.TextBoxFor(m=>m.Load) %
-                    Napięcie wyjściowe @Html.TextBoxFor(m=>m.OutputVoltage) V
+                    <div class="col-xs-12 row">
+                        <div class="col-xs-6">
+                            <div style="position: relative; left: 1px;">
+                                @Html.LabelFor(model => model.Load, "Obciążenie", htmlAttributes: new { @class = "control-label col-md-5" })
+                            </div>
+                            <div>
+                                @Html.TextBoxFor(m => m.Load, new { htmlAttributes = new { @class = "form-control", @style = "left: 100px; min-width: 1px; width: 30px;" } }) %
+                            </div>
+                            <div>
+                                @Html.LabelFor(model => model.OutputVoltage, "Napięcie wyjściowe", htmlAttributes: new { @class = "control-label col-md-5" })
+                            </div>
+                            <div>
+                                @Html.TextBoxFor(m => m.OutputVoltage) V
+                            </div>
+                            <div>
+                                @Html.LabelFor(model => model.OutputVoltageTHD, "THD napięcia wyjściowego", htmlAttributes: new { @class = "control-label col-xs-5" })
+                            </div>
+                            <div>
+                                @Html.TextBoxFor(m => m.OutputVoltageTHD)
+                            </div>
+                        </div>
+                        <div class="col-xs-6">
+                            @Html.LabelFor(model => model.InputCurrentTHD, "THD prądu wejściowego", htmlAttributes: new { @class = "control-label col-md-5" }) @Html.TextBoxFor(m => m.InputCurrentTHD)
+                            @Html.LabelFor(model => model.Frequency, "Częstotliwość wyjściowa", htmlAttributes: new { @class = "control-label col-md-5" }) @Html.TextBoxFor(m => m.Frequency) %
+                            @Html.LabelFor(model => model.PowerFactor, "Współczynnik mocy wejściowej", htmlAttributes: new { @class = "control-label col-md-5" }) @Html.TextBoxFor(m => m.Frequency)
+                        </div>
+                    </div>
                 </div>
+                <div class="col-xs-12">
+                    <h4 align="left">Godziny pracy</h4>
+                    <div class="col-xs-12">
+                        @Html.TextBoxFor(model => model.WorkTimeDay, new { @type = "date", @Value = Model.WorkTimeDay.ToString("yyyy-MM-dd") }) Od @Html.TextBoxFor(model => model.WorkTimeFrom, new { @type = "time", @Value = Model.WorkTimeDay.ToString("08:30") }) Do @Html.TextBoxFor(model => model.WorkTimeTo, new { @type = "time", @Value = Model.WorkTimeDay.ToString("13:30") })
+                    </div>
+                </div>
+                <div><text></text></div>
+                <div class="col-xs-12">
+                    <div class="col-xs-12 row">
+                        <div class="col-xs-2">
+                            Uwagi
+                        </div>
+                        <div class="col-xs-8" style="position: relative; left: 1px;">
+                            @Html.TextBoxFor(m => m.Comment, new { @style = "min-width: 600px; left: 10px;", @Value = "Brak." })
+                        </div>
+                    </div>
+                    <div class="col-xs-12 row">
+                        <div class="col-xs-2">
+                            Uszkodzenia
+                        </div>
+                        <div class="col-xs-8" style="position: relative; left: 1px;">
+                            @Html.TextBoxFor(m => m.Damage, new { @style = "min-width: 600px; left: 10px;", @Value = "Nie stwierdzono." })
+                        </div>
+                    </div>
+                    <div class="col-xs-12 row">
+                        <div class="col-xs-2">
+                            Wymienione części
+                        </div>
+                        <div class="col-xs-8" style="position: relative; left: 1px;">
+                            @Html.TextBoxFor(m => m.ReplacedPart, new { @style = "min-width: 600px; left: 10px;", @Value = "Brak." })
+                        </div>
+                    </div>
+                    <div class="col-xs-12 row">
+                        <div class="col-xs-2">
+                            <b>Wynik końcowy</b>
+                        </div>
+                        <div class="col-xs-8" style="position: relative; left: 1px;">
+                            @Html.TextBoxFor(m => m.FinalResult, new { @style = "min-width: 600px; left: 10px;", @Value = "Urządzenie działa poprawnie i nadaje się do dalszej eksploatacji." })
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12">
+                    <h4>Prace przy urządzeniu</h4>
+                    <div class="col-xs-12 row">
+                        <div class="col-xs-2">
+                            Przegląd urządzenia
+                        </div>
+                        <div class="col-xs-10" style="position: relative; left: 1px;">
+                            @Html.TextBoxFor(m => m.LastReviewDate, new { @style = "left: 1px;", @type = "date", @Value = Model.LastReviewDate.ToString("yyyy-MM-dd") })
+                        </div>
+                        <div class="col-xs-2">
+                            Próby funkcjonalne
+                        </div>
+                        <div class="col-xs-10" style="position: relative; left: 1px;">
+                            @Html.TextBoxFor(m => m.LastFunctionalTest, new { @style = "left: 1px;", @type = "date", @Value = Model.LastFunctionalTest.ToString("yyyy-MM-dd") })
+                        </div>
+                    </div>
+                </div>
+
+
             </p>
         </div>
         <div id="batteryMenu" class="tab-pane fade">
-            <h3>Bateria</h3>
             <p>
-                <div>
-                    @Html.LabelFor(model => model.Installation, "Nazwa baterii", htmlAttributes: new { @class = "control-label col-md-5" })
-                    @Html.DisplayFor(model => model.Installation)-@Html.DisplayFor(model => model.ShortcutName)
+                <div class="col-xs-12">
+                    <div class="col-xs-12">
+                        @Html.LabelFor(model => model.Installation, "Nazwa baterii", htmlAttributes: new { @class = "control-label col-md-5" })
+                        @Html.DisplayFor(model => model.Installation)-@Html.DisplayFor(model => model.ShortcutName)
+                    </div>
+                    <div class="row col-xs-12">
+                        <div class="col-xs-6">
+                            <div>
+                                @Html.LabelFor(model => model.BufferVoltage, "Napięcie buforowe", htmlAttributes: new { @class = "control-label col-xs-5" })
+                            </div>
+                            <div>
+                                @Html.TextBoxFor(m => m.BufferVoltage, new { style = "min-width:20px; max-width:40px;" }) V
+                            </div>
+                        </div>
+                        <div class="col-xs-6">
+                            <div>
+                                @Html.LabelFor(model => model.BatteryTemperature, "Temperatura w akumulatorowni", htmlAttributes: new { @class = "control-label col-xs-5" })
+                            </div>
+                            <div>
+                                @Html.TextBoxFor(m => m.BatteryTemperature, new { style = "min-width:20px; max-width:40px;" }) °C
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row col-xs-12">
+                        <div class="col-xs-4">
+                            @Html.LabelFor(model => model.DensityBefore, "Gęstość przed", htmlAttributes: new { @class = "control-label col-xs-5" }) @Html.TextBoxFor(m => m.DensityBefore, new { style = "min-width:20px; max-width:40px; left: 1px;" }) kg/L
+                        </div>
+                        <div class="col-xs-4">
+                            @Html.LabelFor(model => model.DensityAfter, "Gęstość po", htmlAttributes: new { @class = "control-label col-xs-5" }) @Html.TextBoxFor(m => m.DensityAfter, new { style = "min-width:20px; max-width:40px;" }) kg/L
+                        </div>
+                        <div class="col-xs-4">
+                            @Html.LabelFor(model => model.WaterAmount, "Ilość dolanej wody", htmlAttributes: new { @class = "control-label col-xs-5" }) @Html.TextBoxFor(m => m.WaterAmount, new { style = "min-width:20px; max-width:40px;" }) L
+                        </div>
+                    </div>
+                    <div>
+                        <div class="col-xs-12">
+                            <div class="col-xs-6">
+                                @Html.LabelFor(model => model.BatteryHousing, "Sprawdzenie czy obudowy nieuszkodzone", htmlAttributes: new { @class = "control-label" })
+                            </div>
+                            <div class="col-xs-6" style="position: relative; left: 1px;">
+                                @Html.CheckBoxFor(m => m.BatteryHousing, new { htmlAttributes = new { @class = "form-control", @style = "left: 100px;" } })
+                            </div>
+                        </div>
+                        <div class="col-xs-12">
+                            <div class="col-xs-6">
+                                @Html.LabelFor(model => model.BatteryJumper, "Sprawdzenie mostków", htmlAttributes: new { @class = "control-label" })
+                            </div>
+                            <div class="col-xs-6" style="position: relative; left: 1px;">
+                                @Html.CheckBoxFor(m => m.BatteryJumper, new { htmlAttributes = new { @class = "form-control", @style = "left: 100px;" } })
+                            </div>
+                        </div>
+                        <div class="col-xs-12">
+                            <div class="col-xs-6">
+                                @Html.LabelFor(model => model.BatteryCleaning, "Czyszczenie monobloków", htmlAttributes: new { @class = "control-label" })
+                            </div>
+                            <div class="col-xs-6" style="position: relative; left: 1px;">
+                                @Html.CheckBoxFor(m => m.BatteryCleaning, new { htmlAttributes = new { @class = "form-control", @style = "left: 100px;" } })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12">
+                        <div class="col-xs-6">
+                            @Html.LabelFor(model => model.BatteryTest, "Data testu baterii", htmlAttributes: new { @class = "control-label col-xs-5" })
+                        </div>
+                        <div class="col-xs-6">
+                            @Html.TextBoxFor(m => m.BatteryTest, new { @type = "date", @Value = Model.BatteryTest.ToString("yyyy-MM-dd") })
+                        </div>
+                    </div>
+                    <div class="col-xs-12">
+                        <div class="col-xs-6">
+                            @Html.LabelFor(model => model.BatteryStart, "Godzina startu testu", htmlAttributes: new { @class = "control-label col-xs-5" })
+                        </div>
+                        <div class="col-xs-6">
+                            @Html.TextBoxFor(model => model.BatteryStart, new { @type = "time", @Value = Model.BatteryStart.ToString("09:00") })
+                        </div>
+                    </div>
+                    <div class="col-xs-12">
+                        <div class="col-xs-6">
+                            @Html.LabelFor(model => model.BatteryEnd, "Godzina zakończenia testu", htmlAttributes: new { @class = "control-label col-xs-5" })
+                        </div>
+                        <div class="col-xs-6">
+                            @Html.TextBoxFor(model => model.BatteryEnd, new { @type = "time", @Value = Model.BatteryEnd.ToString("12:00") })
+                        </div>
+                    </div>
+                    <div>
+                        <table border="1">
+                            <tr align="center">
+                                <th align="center">Godzina/Monoblok</th>
+                                <th align="center" text-align:center><input type="time" value="09:15" max="24:00" /></th>
+                                <th align="center" text-align:center><input type="time" value="10:00" max="24:00" /></th>
+                                <th align="center" text-align:center><input type="time" value="11:00" max="24:00" /></th>
+                                <th align="center" text-align:center><input type="time" value="12:00" max="24:00" /></th>
+                            </tr>
+                            @{
+                                var numberMonoblocks = Html.DisplayFor(model => model.Device.BatteryPack.MonoblockNumber).ToString();
+                                var myvalue = Int32.Parse(numberMonoblocks);
+                            }
+                            @for (var i = 1; i <= myvalue; i++)
+                            {
+                                <tr align="center">
+                                    <td align="center">@i</td>
+                                    <td align="center"><input type="number" step=".01" min="0" /></td>
+                                    <td align="center"><input type="number" step=".01" min="0" /></td>
+                                    <td align="center"><input type="number" step=".01" min="0" /></td>
+                                    <td align="center"><input type="number" step=".01" min="0" /></td>
+                                </tr>
+                            }
+                        </table>
+                    </div>
                 </div>
             </p>
         </div>
     </div>
-
-    @*<ul class="nav nav-tabs">
-            <li class="active">
-                <a href="#">Urządzenie</a>
-                <div>
-                    @Html.LabelFor(model => model.WorkSheet.Device.Installation.ShortcutName, "Nazwa urządzenia", htmlAttributes: new { @class = "control-label col-md-5" })
-                    @Html.DisplayFor(model => model.WorkSheet.Device.Installation.ShortcutName)-@Html.DisplayFor(model => model.WorkSheet.Device.ShortcutName)
-                </div>
-            </li>
-            <li>
-                <a href="#">Bateria</a>
-                <div>
-                    @Html.LabelFor(model => model.WorkSheet.Device.Installation.ShortcutName, "Nazwa urządzenia", htmlAttributes: new { @class = "control-label col-md-5" })
-                    @Html.DisplayFor(model => model.WorkSheet.Device.Installation.ShortcutName)-@Html.DisplayFor(model => model.WorkSheet.Device.ShortcutName)
-                </div>
-            </li>
-        </ul>*@
-
-    @*<div class="col-xs-12">
-            <div class="col-xs-12 row">
-                <div class="col-xs-6" style="border: thin solid black">
-                    <h3>Urządzenie</h3>
-                    <div>
-                        @Html.LabelFor(model => model.WorkSheet.Device.Installation.ShortcutName, "Nazwa urządzenia", htmlAttributes: new { @class = "control-label col-md-5" })
-                        @Html.DisplayFor(model => model.WorkSheet.Device.Installation.ShortcutName)-@Html.DisplayFor(model => model.WorkSheet.Device.ShortcutName)
-                    </div>
-                </div>
-            </div>
-        </div>*@
+    <div class="form-group">
+        <div class="col-xs-12" style="vertical-align: middle">
+            <input type="submit" value="Save" class="btn btn-default" />
+        </div>
+    </div>
 }
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">

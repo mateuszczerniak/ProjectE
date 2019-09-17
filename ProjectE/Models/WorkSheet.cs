@@ -9,7 +9,7 @@ namespace ProjectE.Models
     public class WorkSheet
     {
 
-        public int? WorkSheetId { get; set; }
+        public int WorkSheetId { get; set; }
 
         [ForeignKey("Device")]
         public int DeviceId { get; set; }

@@ -19,9 +19,23 @@ namespace ProjectE.Models
         public int WorkReasonId { get; set; }
         public virtual WorkReason WorkReason { get; set; }
 
-        [ForeignKey("FunctionalTest")]
-        public int FunctionalTestId { get; set; }
-        public virtual FunctionalTest FunctionalTest { get; set; }
+        [ForeignKey("Tool")]
+        public int ToolId { get; set; }
+        public virtual Tool Tool { get; set; }
+
+        public bool StartStop { get; set; }
+        public bool RegisterEntries { get; set; }
+        public bool PrimarySupplyOff { get; set; }
+        public bool PrimarySupplyBack { get; set; }
+        public bool BypassSwitch { get; set; }
+        public bool ShortCircuitTest { get; set; }
+        public bool RapidLoadChanges { get; set; }
+        public bool SignallingCheck { get; set; }
+        public bool WorkCorrect { get; set; }
+        public bool HousingCondition { get; set; }
+        public bool WiringCondition { get; set; }
+        public bool DisplayCondition { get; set; }
+        public bool Cleaning { get; set; }
 
         [DataType(DataType.Date, ErrorMessage = "Niepoprawny format daty")]
         [DisplayFormat(DataFormatString = "{0:dd.MM.yyyy}", ApplyFormatInEditMode = true)]
@@ -40,17 +54,20 @@ namespace ProjectE.Models
         public string ReplacedPart { get; set; }
         public string FinalResult { get; set; }
         public int Load { get; set; }
-        public decimal OutputVoltage { get; set; }
-
-        public decimal BufferVoltage { get; set; }
+        public double PowerFactor { get; set; }
+        public double InputCurrentTHD { get; set; }
+        public double OutputVoltageTHD { get; set; }
+        public int Frequency { get; set; }
+        public double OutputVoltage { get; set; }
+        public double BufferVoltage { get; set; }
         public int BatteryTemperature { get; set; }
-        public decimal DensityBefore { get; set; }
-        public decimal DensityAfter { get; set; }
+        public double DensityBefore { get; set; }
+        public double DensityAfter { get; set; }
         public int WaterAmount { get; set; }
         public bool BatteryHousing { get; set; }
         public bool BatteryJumper { get; set; }
         public bool BatteryCleaning { get; set; }
-        public decimal[] Measurement {get;set;}
+        public double[] Measurement {get;set;}
 
         [DataType(DataType.Date, ErrorMessage = "Niepoprawny format daty")]
         [DisplayFormat(DataFormatString = "{0:dd.MM.yyyy}", ApplyFormatInEditMode = true)]

@@ -30,7 +30,6 @@ namespace ProjectE.Models
         public DbSet<WorkReason> WorkReasons { set; get; }
         public DbSet<WorkSheet> WorkSheets { set; get; }
         public DbSet<Report> Reports { set; get; }
-        public DbSet<FunctionalTest> FunctionalTests { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

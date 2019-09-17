@@ -190,6 +190,14 @@ namespace ProjectE.Controllers
                     Value = w.WorkReasonId.ToString()
                 }
                 ).ToList();
+            var workReason = context.WorkReasons.FirstOrDefault(wr => wr.WorkReasonId == id);
+            var tools = context.Tools.Select(w =>
+                new SelectListItem()
+                {
+                    Text = w.ToolType.Name + " " + w.Manufacturer.Name + " " + w.Model,
+                    Value = w.ToolTypeId.ToString()
+                }
+                ).ToList();
             var report = new Report();
             var device = db.Devices.FirstOrDefault();
             var reportViewModel = new ReportViewModel
@@ -197,6 +205,7 @@ namespace ProjectE.Controllers
                 WorkSheetId = workSheets.WorkSheetId,
                 ShortcutName = workSheets.Device.ShortcutName,
                 Installation = workSheets.Device.Installation.ShortcutName,
+                WorkReasonId = workReason.WorkReasonId,
                 WorkReason = workReasons,
                 Device = device,
                 StartStop = false,
@@ -221,6 +230,10 @@ namespace ProjectE.Controllers
                 FinalResult = report.FinalResult,
                 Load = 0,
                 OutputVoltage = 230,
+                PowerFactor = 0.75,
+                InputCurrentTHD = 12,
+                OutputVoltageTHD = 0.3,
+                Frequency = 50,
                 BufferVoltage = 230,
                 BatteryTemperature = 20,
                 DensityBefore = 1.24,
@@ -234,44 +247,38 @@ namespace ProjectE.Controllers
                 BatteryStart = DateTime.Now,
                 BatteryEnd = DateTime.Now,
                 LastFunctionalTest = device.LastFunctionalTest,
-                LastReviewDate = device.LastReviewDate
+                LastReviewDate = device.LastReviewDate,
+                Tool = tools
             };
             return View(reportViewModel);
+        }
 
-            //var context = new Models.Context();
-            //if (id == null)
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Report(Report report)
+        {
+            var context = new Models.Context();
+
+            if (!ModelState.IsValid)
+            {
+                return View(report);
+            }
+
+            context.Reports.Add(report);
+            context.SaveChanges();
+
+            return RedirectToAction("Home");
+            //if (ModelState.IsValid)
             //{
-            //    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            //    db.Reports.Add(report);
+            //    db.SaveChanges();
+            //    return RedirectToAction("Index");
             //}
-            //var workSheets = context.WorkSheets.FirstOrDefault(ps => ps.WorkSheetId == id);
-            //if (workSheets == null)
-            //{
-            //    return HttpNotFound();
-            //}
-            //var workReasons = new WorkReason();
-            //var report = new Report
-            //{
-            //    WorkSheet = workSheets,
-            //    WorkReason = workReasons
-            //};
+            //var tools = db.Tools.FirstOrDefault();
+            //ViewBag.WorkReasonId = new SelectList(db.WorkReasons, "WorkReasonId", "Name", report.WorkReason.WorkReasonId);
+            //ViewBag.ToolId = new SelectList(db.Tools, "ToolId", "Name", tools.ToolId);
             //return View(report);
         }
-        
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult ReportCreate([Bind(Include = "WorkReasonId,Name,WorkSheetId")] Report report)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        db.Reports.Add(report);
-        //        db.SaveChanges();
-        //        return RedirectToAction("Index");
-        //    }
-
-        //    ViewBag.WorkReasonId = new SelectList(db.WorkReasons, "WorkReasonId", "Name", report.WorkReasonId);
-        //    ViewBag.WorkSheetId = new SelectList(db.WorkSheets, "WorkSheetId", "Name", report.WorkSheetId);
-        //    return View(report);
-        //}
 
         protected override void Dispose(bool disposing)
         {
