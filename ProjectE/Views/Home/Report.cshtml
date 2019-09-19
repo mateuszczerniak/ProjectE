@@ -110,9 +110,9 @@
                     <div align="left">
                         @Html.LabelFor(model => model.Tool, "1", htmlAttributes: new { @class = "control-label col-xs-1" }) @Html.DropDownListFor(m => m.ToolId, Model.Tool, "", new { @class = "form-control" })
                     </div>
-                    <div align="left">
+                    @*<div align="left">
                         @Html.LabelFor(model => model.Tool, "2", htmlAttributes: new { @class = "control-label col-xs-1" }) @Html.DropDownListFor(m => m.ToolId, Model.Tool, "", new { @class = "form-control" })
-                    </div>
+                    </div>*@
                     @*<div align="left">
                         @Html.LabelFor(model => model.Tool, "3", htmlAttributes: new { @class = "control-label col-xs-1" }) @Html.DropDownListFor(m => m.Tool, Model.Tool, "", new { @class = "form-control" })
                     </div>
@@ -315,10 +315,10 @@
                             {
                                 <tr align="center">
                                     <td align="center">@i</td>
-                                    <td align="center"><input type="number" step=".01" min="0" /></td>
-                                    <td align="center"><input type="number" step=".01" min="0" /></td>
-                                    <td align="center"><input type="number" step=".01" min="0" /></td>
-                                    <td align="center"><input type="number" step=".01" min="0" /></td>
+                                    <td align="center">@Html.TextBoxFor(m => m.Measurement[0])</td>
+                                    <td align="center">@Html.TextBoxFor(m => m.Measurement[1])</td>
+                                    <td align="center">@*@Html.TextBoxFor(m => m.InternalMeasurment[2])*@</td>
+                                    <td align="center">@*@Html.TextBoxFor(m => m.InternalMeasurment[3])*@</td>
                                 </tr>
                             }
                         </table>

@@ -436,7 +436,7 @@ namespace ProjectE.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult DeviceCreate([Bind(Include = "DeviceId,ShortcutName,SerialNumber,ProductionYear,AssemblyDate,LastReviewDate,PrimarySupply,SecondarySupply,InstallationId,BatteryPackId,LoadId,OperatingModeId,DeviceModelId,DeviceTypeId")] Device device)
+        public ActionResult DeviceCreate([Bind(Include = "DeviceId,ShortcutName,SerialNumber,ProductionYear,AssemblyDate,LastFunctionalTest,LastReviewDate,PrimarySupply,SecondarySupply,InstallationId,BatteryPackId,LoadId,OperatingModeId,DeviceModelId,DeviceTypeId")] Device device)
         {
             if (ModelState.IsValid)
             {

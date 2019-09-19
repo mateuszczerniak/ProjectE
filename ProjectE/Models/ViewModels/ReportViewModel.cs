@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -58,7 +60,23 @@ namespace ProjectE.Models.ViewModels
         public bool BatteryHousing { get; set; }
         public bool BatteryJumper { get; set; }
         public bool BatteryCleaning { get; set; }
-        public decimal[] Measurement { get; set; }
+
+        [NotMapped]
+        public double[] Measurement
+        {
+            get
+            {
+                string[] tab = this.InternalMeasurment.Split(',');
+                return new double[] { double.Parse(tab[0]), double.Parse(tab[1]) };
+            }
+            set
+            {
+                this.InternalMeasurment = string.Format("{0},{1}", value[0], value[1]);
+            }
+        }
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public string InternalMeasurment { get; set; }
 
         [DataType(DataType.Date, ErrorMessage = "Niepoprawny format daty")]
         [DisplayFormat(DataFormatString = "{0:dd.MM.yyyy}", ApplyFormatInEditMode = true)]

@@ -131,37 +131,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201909061200245_001.cs" />
-    <Compile Include="Migrations\201909061200245_001.Designer.cs">
-      <DependentUpon>201909061200245_001.cs</DependentUpon>
+    <Compile Include="Migrations\201909190507311_001.cs" />
+    <Compile Include="Migrations\201909190507311_001.Designer.cs">
+      <DependentUpon>201909190507311_001.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201909111203158_002.cs" />
-    <Compile Include="Migrations\201909111203158_002.Designer.cs">
-      <DependentUpon>201909111203158_002.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201909121048041_003.cs" />
-    <Compile Include="Migrations\201909121048041_003.Designer.cs">
-      <DependentUpon>201909121048041_003.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201909171027442_004.cs" />
-    <Compile Include="Migrations\201909171027442_004.Designer.cs">
-      <DependentUpon>201909171027442_004.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201909171050476_005.cs" />
-    <Compile Include="Migrations\201909171050476_005.Designer.cs">
-      <DependentUpon>201909171050476_005.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201909171059043_006.cs" />
-    <Compile Include="Migrations\201909171059043_006.Designer.cs">
-      <DependentUpon>201909171059043_006.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201909171114487_007.cs" />
-    <Compile Include="Migrations\201909171114487_007.Designer.cs">
-      <DependentUpon>201909171114487_007.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201909171205282_008.cs" />
-    <Compile Include="Migrations\201909171205282_008.Designer.cs">
-      <DependentUpon>201909171205282_008.cs</DependentUpon>
+    <Compile Include="Migrations\201909191112177_002.cs" />
+    <Compile Include="Migrations\201909191112177_002.Designer.cs">
+      <DependentUpon>201909191112177_002.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Battery.cs" />
@@ -311,29 +287,11 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201909061200245_001.resx">
-      <DependentUpon>201909061200245_001.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201909190507311_001.resx">
+      <DependentUpon>201909190507311_001.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201909111203158_002.resx">
-      <DependentUpon>201909111203158_002.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201909121048041_003.resx">
-      <DependentUpon>201909121048041_003.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201909171027442_004.resx">
-      <DependentUpon>201909171027442_004.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201909171050476_005.resx">
-      <DependentUpon>201909171050476_005.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201909171059043_006.resx">
-      <DependentUpon>201909171059043_006.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201909171114487_007.resx">
-      <DependentUpon>201909171114487_007.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201909171205282_008.resx">
-      <DependentUpon>201909171205282_008.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201909191112177_002.resx">
+      <DependentUpon>201909191112177_002.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -20,5 +20,7 @@ namespace ProjectE.Models
         [ForeignKey("ToolType")]
         public int ToolTypeId { get; set; }
         public virtual ToolType ToolType { get; set; }
+
+        public virtual ICollection<Report> Reports { get; set; }
     }
 }

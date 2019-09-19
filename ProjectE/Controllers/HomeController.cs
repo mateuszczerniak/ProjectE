@@ -200,6 +200,9 @@ namespace ProjectE.Controllers
                 ).ToList();
             var report = new Report();
             var device = db.Devices.FirstOrDefault();
+
+            var tool = context.Tools.FirstOrDefault();
+            
             var reportViewModel = new ReportViewModel
             {
                 WorkSheetId = workSheets.WorkSheetId,
@@ -242,13 +245,14 @@ namespace ProjectE.Controllers
                 BatteryHousing = false,
                 BatteryJumper = false,
                 BatteryCleaning = false,
-                Measurement = null,
                 BatteryTest = DateTime.Now,
                 BatteryStart = DateTime.Now,
                 BatteryEnd = DateTime.Now,
                 LastFunctionalTest = device.LastFunctionalTest,
                 LastReviewDate = device.LastReviewDate,
-                Tool = tools
+                Tool = tools,
+                ToolId = tool.ToolId,
+                InternalMeasurment = "2,3"
             };
             return View(reportViewModel);
         }
@@ -263,21 +267,10 @@ namespace ProjectE.Controllers
             {
                 return View(report);
             }
-
             context.Reports.Add(report);
             context.SaveChanges();
 
-            return RedirectToAction("Home");
-            //if (ModelState.IsValid)
-            //{
-            //    db.Reports.Add(report);
-            //    db.SaveChanges();
-            //    return RedirectToAction("Index");
-            //}
-            //var tools = db.Tools.FirstOrDefault();
-            //ViewBag.WorkReasonId = new SelectList(db.WorkReasons, "WorkReasonId", "Name", report.WorkReason.WorkReasonId);
-            //ViewBag.ToolId = new SelectList(db.Tools, "ToolId", "Name", tools.ToolId);
-            //return View(report);
+            return RedirectToAction("");
         }
 
         protected override void Dispose(bool disposing)
