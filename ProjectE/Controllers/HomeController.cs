@@ -252,7 +252,7 @@ namespace ProjectE.Controllers
                 LastReviewDate = device.LastReviewDate,
                 Tool = tools,
                 ToolId = tool.ToolId,
-                InternalMeasurment = "2,3"
+                Measurment = null
             };
             return View(reportViewModel);
         }
