@@ -111,14 +111,14 @@
                         @Html.LabelFor(model => model.Tool, "1", htmlAttributes: new { @class = "control-label col-xs-1" }) @Html.DropDownListFor(m => m.ToolId, Model.Tool, "", new { @class = "form-control" })
                     </div>
                     @*<div align="left">
-                        @Html.LabelFor(model => model.Tool, "2", htmlAttributes: new { @class = "control-label col-xs-1" }) @Html.DropDownListFor(m => m.ToolId, Model.Tool, "", new { @class = "form-control" })
-                    </div>
-                    <div align="left">
-                        @Html.LabelFor(model => model.Tool, "3", htmlAttributes: new { @class = "control-label col-xs-1" }) @Html.DropDownListFor(m => m.Tool, Model.Tool, "", new { @class = "form-control" })
-                    </div>
-                    <div align="left">
-                        @Html.LabelFor(model => model.Tool, "4", htmlAttributes: new { @class = "control-label col-xs-1" }) @Html.DropDownListFor(m => m.Tool, Model.Tool, "", new { @class = "form-control" })
-                    </div>*@
+                            @Html.LabelFor(model => model.Tool, "2", htmlAttributes: new { @class = "control-label col-xs-1" }) @Html.DropDownListFor(m => m.ToolId, Model.Tool, "", new { @class = "form-control" })
+                        </div>
+                        <div align="left">
+                            @Html.LabelFor(model => model.Tool, "3", htmlAttributes: new { @class = "control-label col-xs-1" }) @Html.DropDownListFor(m => m.Tool, Model.Tool, "", new { @class = "form-control" })
+                        </div>
+                        <div align="left">
+                            @Html.LabelFor(model => model.Tool, "4", htmlAttributes: new { @class = "control-label col-xs-1" }) @Html.DropDownListFor(m => m.Tool, Model.Tool, "", new { @class = "form-control" })
+                        </div>*@
                 </div>
                 <div class="col-xs-12">
                     <h4>Parametry elektryczne</h4>
@@ -311,14 +311,15 @@
                                 var numberMonoblocks = Html.DisplayFor(model => model.Device.BatteryPack.MonoblockNumber).ToString();
                                 var myvalue = Int32.Parse(numberMonoblocks);
                             }
+
                             @for (var i = 1; i <= myvalue; i++)
                             {
                                 <tr align="center">
                                     <td align="center">@i</td>
-                                    <td align="center">@Html.TextBox("mes1", "", new { @class = "form-control" }) @*@Html.TextBoxFor(m => m.Measurment)*@</td>
-                                    <td align="center">@Html.TextBox("mes2", "", new { @class = "form-control" }) @*@Html.TextBoxFor(m => m.Measurment)*@</td>
-                                    <td align="center">@Html.TextBox("mes3", "", new { @class = "form-control" }) @*@Html.TextBoxFor(m => m.Measurment)*@</td>
-                                    <td align="center">@Html.TextBox("mes4", "", new { @class = "form-control" }) @*@Html.TextBoxFor(m => m.Measurment)*@</td>
+                                    <td align="center">@Html.TextBoxFor(m => m.Meas[i])</td>
+                                    @*<td align="center">@Html.TextBox("mes" + (i + 1), "", new { @class = "form-control" }) @Html.TextBoxFor(m => m.Meas[i])</td>
+                                        <td align="center">@Html.TextBox("mes" + (i + 2), "", new { @class = "form-control" }) @Html.TextBoxFor(m => m.Meas[i])</td>
+                                        <td align="center">@Html.TextBox("mes" + (i + 3), "", new { @class = "form-control" }) @Html.TextBoxFor(m => m.Meas[i])</td>*@
                                 </tr>
                             }
                         </table>

@@ -68,7 +68,6 @@ namespace ProjectE.Models
         public bool BatteryHousing { get; set; }
         public bool BatteryJumper { get; set; }
         public bool BatteryCleaning { get; set; }
-
         public string Measurment { get; set; }
 
         [DataType(DataType.Date, ErrorMessage = "Niepoprawny format daty")]

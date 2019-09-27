@@ -147,6 +147,14 @@
     <Compile Include="Migrations\201909201039363_004.Designer.cs">
       <DependentUpon>201909201039363_004.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201909261038028_005.cs" />
+    <Compile Include="Migrations\201909261038028_005.Designer.cs">
+      <DependentUpon>201909261038028_005.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909261053003_006.cs" />
+    <Compile Include="Migrations\201909261053003_006.Designer.cs">
+      <DependentUpon>201909261053003_006.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Battery.cs" />
     <Compile Include="Models\BatteryPack.cs" />
@@ -306,6 +314,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201909201039363_004.resx">
       <DependentUpon>201909201039363_004.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909261038028_005.resx">
+      <DependentUpon>201909261038028_005.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909261053003_006.resx">
+      <DependentUpon>201909261053003_006.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

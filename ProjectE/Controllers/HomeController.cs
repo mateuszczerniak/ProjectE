@@ -202,75 +202,108 @@ namespace ProjectE.Controllers
             var device = db.Devices.FirstOrDefault();
 
             var tool = context.Tools.FirstOrDefault();
-            
-            var reportViewModel = new ReportViewModel
-            {
-                WorkSheetId = workSheets.WorkSheetId,
-                ShortcutName = workSheets.Device.ShortcutName,
-                Installation = workSheets.Device.Installation.ShortcutName,
-                WorkReasonId = workReason.WorkReasonId,
-                WorkReason = workReasons,
-                Device = device,
-                StartStop = false,
-                RegisterEntries = false,
-                PrimarySupplyOff = false,
-                PrimarySupplyBack = false,
-                BypassSwitch = false,
-                ShortCircuitTest = false,
-                RapidLoadChanges = false,
-                SignallingCheck = false,
-                WorkCorrect = false,
-                HousingCondition = false,
-                WiringCondition = false,
-                DisplayCondition = false,
-                Cleaning = false,
-                WorkTimeDay = DateTime.Now,
-                WorkTimeFrom = DateTime.Now,
-                WorkTimeTo = DateTime.Now,
-                Comment = report.Comment,
-                Damage = report.Damage,
-                ReplacedPart = report.ReplacedPart,
-                FinalResult = report.FinalResult,
-                Load = 0,
-                OutputVoltage = 230,
-                PowerFactor = 0.75,
-                InputCurrentTHD = 12,
-                OutputVoltageTHD = 0.3,
-                Frequency = 50,
-                BufferVoltage = 230,
-                BatteryTemperature = 20,
-                DensityBefore = 1.24,
-                DensityAfter = 1.16,
-                WaterAmount = 0,
-                BatteryHousing = false,
-                BatteryJumper = false,
-                BatteryCleaning = false,
-                BatteryTest = DateTime.Now,
-                BatteryStart = DateTime.Now,
-                BatteryEnd = DateTime.Now,
-                LastFunctionalTest = device.LastFunctionalTest,
-                LastReviewDate = device.LastReviewDate,
-                Tool = tools,
-                ToolId = tool.ToolId,
-                Measurment = null
-            };
+            var monoblockNumber = device.BatteryPack.MonoblockNumber;
+            //var reportViewModel = new ReportViewModel
+            //{
+            //    WorkSheetId = workSheets.WorkSheetId,
+            //    ShortcutName = workSheets.Device.ShortcutName,
+            //    Installation = workSheets.Device.Installation.ShortcutName,
+            //    WorkReasonId = workReason.WorkReasonId,
+            //    WorkReason = workReasons,
+            //    Device = device,
+            //    StartStop = false,
+            //    RegisterEntries = false,
+            //    PrimarySupplyOff = false,
+            //    PrimarySupplyBack = false,
+            //    BypassSwitch = false,
+            //    ShortCircuitTest = false,
+            //    RapidLoadChanges = false,
+            //    SignallingCheck = false,
+            //    WorkCorrect = false,
+            //    HousingCondition = false,
+            //    WiringCondition = false,
+            //    DisplayCondition = false,
+            //    Cleaning = false,
+            //    WorkTimeDay = DateTime.Now,
+            //    WorkTimeFrom = DateTime.Now,
+            //    WorkTimeTo = DateTime.Now,
+            //    Comment = report.Comment,
+            //    Damage = report.Damage,
+            //    ReplacedPart = report.ReplacedPart,
+            //    FinalResult = report.FinalResult,
+            //    Load = 0,
+            //    OutputVoltage = 230,
+            //    PowerFactor = 0.75,
+            //    InputCurrentTHD = 12,
+            //    OutputVoltageTHD = 0.3,
+            //    Frequency = 50,
+            //    BufferVoltage = 230,
+            //    BatteryTemperature = 20,
+            //    DensityBefore = 1.24,
+            //    DensityAfter = 1.16,
+            //    WaterAmount = 0,
+            //    BatteryHousing = false,
+            //    BatteryJumper = false,
+            //    BatteryCleaning = false,
+            //    BatteryTest = DateTime.Now,
+            //    BatteryStart = DateTime.Now,
+            //    BatteryEnd = DateTime.Now,
+            //    LastFunctionalTest = device.LastFunctionalTest,
+            //    LastReviewDate = device.LastReviewDate,
+            //    Tool = tools,
+            //    ToolId = tool.ToolId,
+            //    Meas = new string[37] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37" },
+            //    //Meas = new string[monoblockNumber + 1]
+            //    //Measurment = string.Join(";", reportViewModel.Meas)
+            //};
+            //reportViewModel.Measurment = string.Join(";", reportViewModel.Meas);
+
+            var reportViewModel = new ReportViewModel();
+            var mesa = new string[37] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37" };
+            string xxx = string.Join(",", mesa);
+            reportViewModel.Measurment = string.Join(";", mesa);
+
+
             return View(reportViewModel);
         }
 
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult Report(Report report, ReportViewModel reportVM)
+        //{
+        //    var context = new Models.Context();
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return View(report);
+        //    }
+        //    context.Reports.Add(report);
+        //    context.SaveChanges();
+
+        //    return RedirectToAction("");
+        //}
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Report(Report report)
+        public ActionResult Report(ReportViewModel reportVM)
         {
             var context = new Models.Context();
+            var report = new Report();
 
-            if (!ModelState.IsValid)
-            {
-                return View(report);
-            }
-            context.Reports.Add(report);
+            report.DensityBefore = reportVM.DensityBefore;
+            //report.Measurment = string.Join(";", reportVM.Meas);
+
+            context.Entry(report).State = System.Data.Entity.EntityState.Modified;
             context.SaveChanges();
 
             return RedirectToAction("");
+
+            //var context = new Models.Context();
+
+            //report.Measurment = string.Join(";", reportVM.Meas);
+            //context.Reports.Add(report);
+            //context.SaveChanges();
+
+            //return RedirectToAction("");
         }
 
         protected override void Dispose(bool disposing)
